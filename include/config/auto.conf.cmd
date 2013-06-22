@@ -87,6 +87,10 @@ deps_config := \
 	fs/ext3/Kconfig \
 	fs/ext2/Kconfig \
 	fs/Kconfig \
+	drivers/samsung/Kconfig \
+	drivers/motor/Kconfig \
+	drivers/sensorhub/Kconfig \
+	drivers/sensor/Kconfig \
 	drivers/devfreq/Kconfig \
 	drivers/virt/Kconfig \
 	drivers/rpmsg/Kconfig \
@@ -319,6 +323,28 @@ deps_config := \
 	drivers/media/radio/wl128x/Kconfig \
 	drivers/media/radio/si470x/Kconfig \
 	drivers/media/radio/Kconfig \
+	drivers/media/video/mhl/Kconfig \
+	drivers/media/video/exynos/fimc-is-mc/Kconfig \
+	drivers/media/video/exynos/gsc/Kconfig \
+	drivers/media/video/exynos/fimc-is/Kconfig \
+	drivers/media/video/exynos/rotator/Kconfig \
+	drivers/media/video/exynos/tv/Kconfig \
+	drivers/media/video/exynos/mipi-csis/Kconfig \
+	drivers/media/video/exynos/fimc-lite/Kconfig \
+	drivers/media/video/exynos/mdev/Kconfig \
+	drivers/media/video/exynos/Kconfig \
+	drivers/media/video/samsung/jpeg_v2x/Kconfig \
+	drivers/media/video/samsung/jpeg/Kconfig \
+	drivers/media/video/samsung/fimg2d4x-exynos4/Kconfig \
+	drivers/media/video/samsung/fimg2d3x-exynos4/Kconfig \
+	drivers/media/video/samsung/fimg2d4x/Kconfig \
+	drivers/media/video/samsung/fimg2d3x/Kconfig \
+	drivers/media/video/samsung/ump/Kconfig \
+	drivers/media/video/samsung/mali/Kconfig \
+	drivers/media/video/samsung/mfc5x/Kconfig \
+	drivers/media/video/samsung/tvout/Kconfig \
+	drivers/media/video/samsung/fimc/Kconfig \
+	drivers/media/video/samsung/Kconfig \
 	drivers/media/video/s5p-tv/Kconfig \
 	drivers/media/video/blackfin/Kconfig \
 	drivers/media/video/omap/Kconfig \
@@ -694,6 +720,10 @@ deps_config := \
 	arch/arm/common/Kconfig \
 	arch/arm/Kconfig-nommu \
 	arch/arm/mm/Kconfig \
+	arch/arm/mach-s3c2443/Kconfig \
+	arch/arm/mach-s3c2416/Kconfig \
+	arch/arm/mach-s3c2410/Kconfig \
+	arch/arm/mach-s3c2400/Kconfig \
 	arch/arm/mach-w90x900/Kconfig \
 	arch/arm/mach-vt8500/Kconfig \
 	arch/arm/plat-versatile/Kconfig \

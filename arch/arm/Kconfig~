@@ -879,10 +879,9 @@ config ARCH_S5PV210
 	  Samsung S5PV210/S5PC110 series based systems
 
 config ARCH_EXYNOS
-	bool "SAMSUNG EXYNOS"
+	bool "Samsung EXYNOS"
 	select CPU_V7
-	select ARCH_SPARSEMEM_ENABLE
-	select ARCH_HAS_HOLES_MEMORYMODEL
+	select ARCH_FLATMEM_ENABLE
 	select GENERIC_GPIO
 	select HAVE_CLK
 	select CLKDEV_LOOKUP
@@ -891,9 +890,10 @@ config ARCH_EXYNOS
 	select HAVE_S3C_RTC if RTC_CLASS
 	select HAVE_S3C2410_I2C if I2C
 	select HAVE_S3C2410_WATCHDOG if WATCHDOG
-	select NEED_MACH_MEMORY_H
+	select ARCH_HAS_OPP
+	select PM_OPP if PM
 	help
-	  Support for SAMSUNG's EXYNOS SoCs (EXYNOS4/5)
+	  Samsung EXYNOS series based systems
 
 config ARCH_SHARK
 	bool "Shark"

@@ -64,4 +64,7 @@ obj-$(CONFIG_RAMOOPS)		+= ramoops.o
 obj-$(CONFIG_JS_RTC)		+= js-rtc.o
 js-rtc-y = rtc.o
 
+obj-$(CONFIG_S3C_MEM)		+= s3c_mem.o
+obj-$(CONFIG_EXYNOS_MEM)	+= exynos_mem.o
+
 obj-$(CONFIG_TILE_SROM)		+= tile-srom.o
