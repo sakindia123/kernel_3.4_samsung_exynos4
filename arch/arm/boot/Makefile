@@ -11,6 +11,8 @@
 # Copyright (C) 1995-2002 Russell King
 #
 
+MKFIPS          := $(srctree)/scripts/mk_fipsbinary.sh
+
 ifneq ($(MACHINE),)
 include $(srctree)/$(MACHINE)/Makefile.boot
 endif
@@ -61,6 +63,9 @@ $(obj)/compressed/vmlinux: $(obj)/Image FORCE
 
 $(obj)/zImage:	$(obj)/compressed/vmlinux FORCE
 	$(call if_changed,objcopy)
+ifeq ($(CONFIG_CRYPTO_FIPS),y)
+	$(MKFIPS) $(obj)/zImage
+endif
 	@echo '  Kernel: $@ is ready'
 
 $(obj)/zImage-dtb:	$(obj)/zImage $(DTB_OBJS) FORCE
