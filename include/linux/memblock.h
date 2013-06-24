@@ -2,6 +2,8 @@
 #define _LINUX_MEMBLOCK_H
 #ifdef __KERNEL__
 
+#define MEMBLOCK_ERROR	0
+
 #ifdef CONFIG_HAVE_MEMBLOCK
 /*
  * Logical memory blocks.
@@ -16,6 +18,8 @@
 
 #include <linux/init.h>
 #include <linux/mm.h>
+
+#include <asm/memblock.h>
 
 #define INIT_MEMBLOCK_REGIONS	128
 
