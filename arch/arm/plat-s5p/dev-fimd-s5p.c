@@ -12,7 +12,7 @@
 
 #include <linux/interrupt.h>
 #include <linux/platform_device.h>
-
+#include <linux/mm.h>
 #include <mach/map.h>
 #include <plat/fb-s5p.h>
 
