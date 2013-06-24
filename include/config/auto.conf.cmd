@@ -285,13 +285,15 @@ deps_config := \
 	drivers/video/logo/Kconfig \
 	drivers/video/console/Kconfig \
 	drivers/video/backlight/Kconfig \
-	drivers/video/exynos/Kconfig \
 	drivers/video/omap2/displays/Kconfig \
 	drivers/video/omap2/omapfb/Kconfig \
 	drivers/video/omap2/dss/Kconfig \
 	drivers/video/omap2/Kconfig \
 	drivers/video/omap/Kconfig \
 	drivers/video/geode/Kconfig \
+	drivers/video/samsung_duallcd/Kconfig \
+	drivers/video/samsung_extdisp/Kconfig \
+	drivers/video/samsung/Kconfig \
 	drivers/gpu/ion/Kconfig \
 	drivers/gpu/stub/Kconfig \
 	drivers/gpu/drm/udl/Kconfig \
@@ -713,6 +715,7 @@ deps_config := \
 	drivers/cpufreq/Kconfig.arm \
 	drivers/cpufreq/Kconfig.x86 \
 	drivers/cpufreq/Kconfig \
+	arch/arm/mvp/Kconfig \
 	mm/Kconfig \
 	kernel/Kconfig.preempt \
 	kernel/time/Kconfig \

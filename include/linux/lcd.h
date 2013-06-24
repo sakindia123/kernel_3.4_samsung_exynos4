@@ -76,6 +76,9 @@ struct lcd_platform_data {
 	   lcd power off and 1, lcd power on. */
 	int (*power_on)(struct lcd_device *ld, int enable);
 
+	int (*gpio_cfg_earlysuspend)(struct lcd_device *ld);
+	int (*gpio_cfg_lateresume)(struct lcd_device *ld);
+
 	/* it indicates whether lcd panel was enabled
 	   from bootloader or not. */
 	int lcd_enabled;
@@ -87,6 +90,8 @@ struct lcd_platform_data {
 	unsigned int power_on_delay;
 	/* stable time needing to become lcd power off. */
 	unsigned int power_off_delay;
+	/*stable time needing to become sleep in mode after sleep out mode. */
+	unsigned int sleep_in_delay;
 
 	/* it could be used for any purpose. */
 	void *pdata;

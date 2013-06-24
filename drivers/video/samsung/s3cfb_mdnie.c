@@ -15,6 +15,7 @@
 #include "s3cfb_ielcd.h"
 #include "s3cfb_mdnie.h"
 #include "mdnie.h"
+#include <linux/module.h>
 
 
 #define s3c_mdnie_readl(addr)			__raw_readl((s3c_mdnie_base + addr))

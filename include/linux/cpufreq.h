@@ -14,6 +14,7 @@
 #include <linux/mutex.h>
 #include <linux/notifier.h>
 #include <linux/threads.h>
+#include <linux/device.h>
 #include <linux/kobject.h>
 #include <linux/sysfs.h>
 #include <linux/completion.h>
@@ -23,7 +24,8 @@
 
 #define CPUFREQ_NAME_LEN 16
 
-
+#define CPU_UV_MV_MAX    1500000
+#define CPU_UV_MV_MIN    750000
 /*********************************************************************
  *                     CPUFREQ NOTIFIER INTERFACE                    *
  *********************************************************************/

@@ -27,6 +27,7 @@
 #include <linux/lcd.h>
 #include <linux/backlight.h>
 #include <linux/ld9040.h>
+#include <linux/module.h>
 #ifdef CONFIG_HAS_EARLYSUSPEND
 #include <linux/earlysuspend.h>
 #endif

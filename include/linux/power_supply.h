@@ -13,6 +13,8 @@
 #ifndef __LINUX_POWER_SUPPLY_H__
 #define __LINUX_POWER_SUPPLY_H__
 
+#include <linux/device.h>
+#include <linux/wakelock.h>
 #include <linux/workqueue.h>
 #include <linux/leds.h>
 
@@ -143,6 +145,10 @@ enum power_supply_type {
 	POWER_SUPPLY_TYPE_USB_DCP,	/* Dedicated Charging Port */
 	POWER_SUPPLY_TYPE_USB_CDP,	/* Charging Downstream Port */
 	POWER_SUPPLY_TYPE_USB_ACA,	/* Accessory Charger Adapters */
+	POWER_SUPPLY_TYPE_OTG,
+	POWER_SUPPLY_TYPE_DOCK,
+	POWER_SUPPLY_TYPE_MISC,
+	POWER_SUPPLY_TYPE_WIRELESS,
 };
 
 union power_supply_propval {
