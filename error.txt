@@ -1,445 +1,280 @@
-root@sarthak:/home/sarthak/revoer/kernel_common# make -j32
-  CHK     include/linux/version.h
-  CHK     include/generated/utsrelease.h
-make[1]: `include/generated/mach-types.h' is up to date.
-  CALL    scripts/checksyscalls.sh
-  CHK     include/generated/compile.h
-  CC      arch/arm/plat-s5p/irq-gpioint.o
-  CC      arch/arm/plat-s5p/s5p-sysmmu.o
-  CC      arch/arm/plat-s5p/dev-ehci.o
-  CC      arch/arm/plat-s5p/s5p_iommu.o
-  CC      arch/arm/plat-s5p/s5p_iovmm.o
-  CC      arch/arm/plat-samsung/irq-uart.o
-  CC      arch/arm/plat-samsung/platformdata.o
-  CC      arch/arm/plat-samsung/dev-wdt.o
-  CC      arch/arm/plat-samsung/dev-adc.o
-  CC      arch/arm/plat-samsung/dev-ts.o
-  CC      arch/arm/plat-samsung/dev-ts1.o
-  CC      arch/arm/mach-exynos/pm-exynos4.o
-  CC      arch/arm/plat-samsung/pm.o
-  CC      arch/arm/mach-exynos/cpufreq.o
-  CC      arch/arm/mach-exynos/cpuidle-exynos4.o
-  CC      arch/arm/mach-exynos/mct.o
-  CC      arch/arm/mach-exynos/mach-u1.o
-  CC      arch/arm/mach-exynos/sec-common.o
-arch/arm/plat-s5p/dev-ehci.c:27:24: error: 'SZ_256' undeclared here (not in a function)
-arch/arm/plat-s5p/dev-ehci.c:77:3: error: initializer element is not constant
-arch/arm/plat-s5p/dev-ehci.c:77:3: error: (near initialization for 's5p_ohci_resource[0].end')
-make[1]: *** [arch/arm/plat-s5p/dev-ehci.o] Error 1
-make[1]: *** Waiting for unfinished jobs....
 arch/arm/plat-s5p/irq-gpioint.c: In function 's5p_gpioint_add':
-arch/arm/plat-s5p/irq-gpioint.c:196:25: error: 'irq_gc_mask_and_ack_set' undeclared (first use in this function)
-arch/arm/plat-s5p/irq-gpioint.c:196:25: note: each undeclared identifier is reported only once for each function it appears in
+arch/arm/plat-s5p/irq-gpioint.c:196: error: 'irq_gc_mask_and_ack_set' undeclared (first use in this function)
+arch/arm/plat-s5p/irq-gpioint.c:196: error: (Each undeclared identifier is reported only once
+arch/arm/plat-s5p/irq-gpioint.c:196: error: for each function it appears in.)
 make[1]: *** [arch/arm/plat-s5p/irq-gpioint.o] Error 1
-arch/arm/plat-samsung/platformdata.c: In function 's3c_set_platdata':
-arch/arm/plat-samsung/platformdata.c:29:28: error: 'GFP_KERNEL' undeclared (first use in this function)
-arch/arm/plat-samsung/platformdata.c:29:28: note: each undeclared identifier is reported only once for each function it appears in
-make[1]: *** [arch/arm/plat-samsung/platformdata.o] Error 1
 make[1]: *** Waiting for unfinished jobs....
-  CC      drivers/cpufreq/exynos-cpufreq.o
-  CC      drivers/gpio/gpio-samsung.o
-arch/arm/plat-samsung/dev-wdt.c:24:23: error: 'SZ_4K' undeclared here (not in a function)
-arch/arm/plat-samsung/dev-wdt.c:40:1: warning: data definition has no type or storage class [enabled by default]
-arch/arm/plat-samsung/dev-wdt.c:40:1: warning: type defaults to 'int' in declaration of 'EXPORT_SYMBOL' [-Wimplicit-int]
-arch/arm/plat-samsung/dev-wdt.c:40:1: warning: parameter names (without types) in function declaration [enabled by default]
-make[1]: *** [arch/arm/plat-samsung/dev-wdt.o] Error 1
-arch/arm/plat-s5p/s5p-sysmmu.c:603:13: error: 'THIS_MODULE' undeclared here (not in a function)arch/arm/plat-samsung/dev-adc.c:26:29: error: 'SZ_8K' undeclared here (not in a function)arch/arm/plat-samsung/dev-ts.c:29:29: error: 'SZ_256' undeclared here (not in a function)
+  CC      drivers/gpu/ion/exynos/exynos_ion.o
+  CC      drivers/mmc/host/sdhci-s3c.o
+  CC      drivers/power/max8997_charger_u1.o
+  CC      drivers/base/s5p-iommu.o
+  CC      drivers/power/sec_battery_u1.o
+  CC [M]  drivers/samsung/fm_si4709/Si4709_dev.o
+  CC      drivers/power/max17042_fuelgauge_u1.o
+  CC      drivers/regulator/max8997.o
+  CC [M]  drivers/samsung/fm_si4709/Si4709_main.o
+  CC      drivers/usb/gadget/android.o
 arch/arm/plat-s5p/s5p_iovmm.c: In function 'iovmm_setup':
-arch/arm/plat-s5p/s5p_iovmm.c:373:2: error: too few arguments to function 'iommu_domain_alloc'
-In file included from arch/arm/plat-s5p/s5p_iovmm.c:16:0:
-include/linux/iommu.h:149:36: note: declared here
-
-
-arch/arm/plat-samsung/dev-ts1.c:29:30: error: 'SZ_256' undeclared here (not in a function)arch/arm/plat-s5p/s5p_iovmm.c: In function 'iovmm_map':make[1]: *** [arch/arm/plat-samsung/dev-adc.o] Error 1
-arch/arm/plat-s5p/s5p_iommu.c:577:2: error: unknown field 'domain_init' specified in initializer
-arch/arm/plat-s5p/s5p_iovmm.c:503:2: error: implicit declaration of function 'gen_pool_alloc_aligned' [-Werror=implicit-function-declaration]
-
-
-arch/arm/plat-s5p/s5p_iommu.c:577:2: warning: excess elements in struct initializer [enabled by default]
-arch/arm/plat-s5p/s5p_iommu.c:577:2: warning: (near initialization for 's5p_iommu_ops') [enabled by default]
-arch/arm/plat-s5p/s5p_iommu.c:578:2: error: unknown field 'domain_destroy' specified in initializer
-arch/arm/plat-s5p/s5p_iommu.c:578:2: warning: excess elements in struct initializer [enabled by default]
-arch/arm/plat-s5p/s5p_iommu.c:578:2: warning: (near initialization for 's5p_iommu_ops') [enabled by default]
-arch/arm/plat-s5p/s5p_iommu.c:579:2: error: unknown field 'attach_dev' specified in initializer
-arch/arm/plat-s5p/s5p_iommu.c:579:2: warning: excess elements in struct initializer [enabled by default]
-arch/arm/plat-s5p/s5p_iommu.c:579:2: warning: (near initialization for 's5p_iommu_ops') [enabled by default]
-arch/arm/plat-s5p/s5p_iommu.c:580:2: error: unknown field 'detach_dev' specified in initializer
-arch/arm/plat-s5p/s5p_iommu.c:580:2: warning: excess elements in struct initializer [enabled by default]
-arch/arm/plat-s5p/s5p_iommu.c:580:2: warning: (near initialization for 's5p_iommu_ops') [enabled by default]
-arch/arm/plat-s5p/s5p_iommu.c:581:2: error: unknown field 'map' specified in initializer
-arch/arm/plat-s5p/s5p_iommu.c:581:2: warning: excess elements in struct initializer [enabled by default]make[1]: *** [arch/arm/plat-samsung/dev-ts.o] Error 1
-
-arch/arm/plat-s5p/s5p_iommu.c:581:2: warning: (near initialization for 's5p_iommu_ops') [enabled by default]
-arch/arm/plat-s5p/s5p_iommu.c:582:2: error: unknown field 'unmap' specified in initializerarch/arm/plat-samsung/dev-ts1.c: In function 's3c24xx_ts1_set_platdata':
-arch/arm/plat-s5p/s5p_iommu.c:582:2: warning: excess elements in struct initializer [enabled by default]
-arch/arm/plat-s5p/s5p_iommu.c:582:2: warning: (near initialization for 's5p_iommu_ops') [enabled by default]
-arch/arm/plat-s5p/s5p_iommu.c:583:2: error: unknown field 'iova_to_phys' specified in initializer
-arch/arm/plat-s5p/s5p_iommu.c:583:2: warning: excess elements in struct initializer [enabled by default]
-arch/arm/plat-s5p/s5p_iommu.c:583:2: warning: (near initialization for 's5p_iommu_ops') [enabled by default]
-arch/arm/plat-s5p/s5p_iommu.c:584:2: error: unknown field 'domain_has_cap' specified in initializer
-arch/arm/plat-s5p/s5p_iommu.c:584:2: warning: excess elements in struct initializer [enabled by default]
-arch/arm/plat-s5p/s5p_iommu.c:584:2: warning: (near initialization for 's5p_iommu_ops') [enabled by default]
-arch/arm/plat-samsung/dev-ts1.c:55:57: error: 'GFP_KERNEL' undeclared (first use in this function)
-
-arch/arm/plat-s5p/s5p_iommu.c: In function 's5p_iommu_init':arch/arm/plat-samsung/dev-ts1.c:55:57: note: each undeclared identifier is reported only once for each function it appears in
-arch/arm/plat-samsung/dev-ts1.c:55:34: warning: passing argument 3 of 'kmemdup' makes integer from pointer without a cast [enabled by default]
-In file included from arch/arm/plat-samsung/dev-ts1.c:17:0:
-include/linux/string.h:121:14: note: expected 'gfp_t' but argument is of type 'struct resource *'
-
-arch/arm/plat-s5p/s5p_iommu.c:594:2: error: implicit declaration of function 'register_iommu' [-Werror=implicit-function-declaration]
-cc1: some warnings being treated as errors
-make[1]: *** [arch/arm/plat-s5p/s5p_iommu.o] Error 1
-make[1]: *** [arch/arm/plat-samsung/dev-ts1.o] Error 1
-arch/arm/mach-exynos/sec-common.c:5:1: warning: data definition has no type or storage class [enabled by default]cc1: some warnings being treated as errorsmake[1]: *** [arch/arm/plat-s5p/s5p-sysmmu.o] Error 1
-
+arch/arm/plat-s5p/s5p_iovmm.c:373: error: too few arguments to function 'iommu_domain_alloc'
+arch/arm/plat-s5p/s5p_iovmm.c: In function 'iovmm_map':
+arch/arm/plat-s5p/s5p_iovmm.c:503: warning: implicit declaration of function 'gen_pool_alloc_aligned'
+arch/arm/plat-s5p/s5p_iommu.c:577: error: unknown field 'domain_init' specified in initializer
+arch/arm/plat-s5p/s5p_iommu.c:577: warning: excess elements in struct initializer
+arch/arm/plat-s5p/s5p_iommu.c:577: warning: (near initialization for 's5p_iommu_ops')
+arch/arm/plat-s5p/s5p_iommu.c:578: error: unknown field 'domain_destroy' specified in initializer
+arch/arm/plat-s5p/s5p_iommu.c:578: warning: excess elements in struct initializer
+arch/arm/plat-s5p/s5p_iommu.c:578: warning: (near initialization for 's5p_iommu_ops')
+arch/arm/plat-s5p/s5p_iommu.c:579: error: unknown field 'attach_dev' specified in initializer
+arch/arm/plat-s5p/s5p_iommu.c:579: warning: excess elements in struct initializer
+arch/arm/plat-s5p/s5p_iommu.c:579: warning: (near initialization for 's5p_iommu_ops')
+arch/arm/plat-s5p/s5p_iommu.c:580: error: unknown field 'detach_dev' specified in initializer
+arch/arm/plat-s5p/s5p_iommu.c:580: warning: excess elements in struct initializer
+arch/arm/plat-s5p/s5p_iommu.c:580: warning: (near initialization for 's5p_iommu_ops')
+arch/arm/plat-s5p/s5p_iommu.c:581: error: unknown field 'map' specified in initializer
+arch/arm/plat-s5p/s5p_iommu.c:581: warning: excess elements in struct initializer
+arch/arm/plat-s5p/s5p_iommu.c:581: warning: (near initialization for 's5p_iommu_ops')
+arch/arm/plat-s5p/s5p_iommu.c:582: error: unknown field 'unmap' specified in initializer
+arch/arm/plat-s5p/s5p_iommu.c:582: warning: excess elements in struct initializer
+arch/arm/plat-s5p/s5p_iommu.c:582: warning: (near initialization for 's5p_iommu_ops')
+arch/arm/plat-s5p/s5p_iommu.c:583: error: unknown field 'iova_to_phys' specified in initializer
+arch/arm/plat-s5p/s5p_iommu.c:583: warning: excess elements in struct initializer
+arch/arm/plat-s5p/s5p_iommu.c:583: warning: (near initialization for 's5p_iommu_ops')
+arch/arm/plat-s5p/s5p_iommu.c:584: error: unknown field 'domain_has_cap' specified in initializer
+arch/arm/plat-s5p/s5p_iommu.c:584: warning: excess elements in struct initializer
+arch/arm/plat-s5p/s5p_iommu.c:584: warning: (near initialization for 's5p_iommu_ops')
+arch/arm/plat-s5p/s5p_iommu.c: In function 's5p_iommu_init':
+arch/arm/plat-s5p/s5p_iommu.c:594: warning: implicit declaration of function 'register_iommu'
 make[1]: *** [arch/arm/plat-s5p/s5p_iovmm.o] Error 1
+make[1]: *** [arch/arm/plat-s5p/s5p_iommu.o] Error 1
 make: *** [arch/arm/plat-s5p] Error 2
 make: *** Waiting for unfinished jobs....
-
-arch/arm/mach-exynos/sec-common.c:5:1: warning: type defaults to 'int' in declaration of 'EXPORT_SYMBOL' [-Wimplicit-int]
-arch/arm/mach-exynos/sec-common.c:5:1: warning: parameter names (without types) in function declaration [enabled by default]
-arch/arm/mach-exynos/sec-common.c: In function 'midas_class_create':
-arch/arm/mach-exynos/sec-common.c:9:14: error: 'THIS_MODULE' undeclared (first use in this function)
-arch/arm/mach-exynos/sec-common.c:9:14: note: each undeclared identifier is reported only once for each function it appears in
-make[1]: *** [arch/arm/mach-exynos/sec-common.o] Error 1
+arch/arm/mach-exynos/sec-reboot.c: In function 'sec_reboot_init':
+arch/arm/mach-exynos/sec-reboot.c:134: error: 'arm_pm_restart' undeclared (first use in this function)
+arch/arm/mach-exynos/sec-reboot.c:134: error: (Each undeclared identifier is reported only once
+arch/arm/mach-exynos/sec-reboot.c:134: error: for each function it appears in.)
+make[1]: *** [arch/arm/mach-exynos/sec-reboot.o] Error 1
 make[1]: *** Waiting for unfinished jobs....
-  CC      drivers/input/keyboard/cypress/cypress-touchkey.o
-  CC      drivers/mmc/host/sdhci-s3c.o
 arch/arm/plat-samsung/irq-uart.c: In function 's3c_init_uart_irq':
-arch/arm/plat-samsung/irq-uart.c:77:26: error: 'irq_gc_mask_and_ack_set' undeclared (first use in this function)
-arch/arm/plat-samsung/irq-uart.c:77:26: note: each undeclared identifier is reported only once for each function it appears in
+arch/arm/plat-samsung/irq-uart.c:77: error: 'irq_gc_mask_and_ack_set' undeclared (first use in this function)
+arch/arm/plat-samsung/irq-uart.c:77: error: (Each undeclared identifier is reported only once
+arch/arm/plat-samsung/irq-uart.c:77: error: for each function it appears in.)
 make[1]: *** [arch/arm/plat-samsung/irq-uart.o] Error 1
-arch/arm/mach-exynos/mct.c:173:6: error: 'CLOCK_SOURCE_SCHED_CLOCK' undeclared here (not in a function)
-make[1]: *** [arch/arm/mach-exynos/mct.o] Error 1
-arch/arm/mach-exynos/cpufreq.c:227:1: warning: data definition has no type or storage class [enabled by default]
-arch/arm/mach-exynos/cpufreq.c:227:1: warning: type defaults to 'int' in declaration of 'EXPORT_SYMBOL_GPL' [-Wimplicit-int]
-arch/arm/mach-exynos/cpufreq.c:227:1: warning: parameter names (without types) in function declaration [enabled by default]
-arch/arm/mach-exynos/cpufreq.c:255:1: warning: data definition has no type or storage class [enabled by default]
-arch/arm/mach-exynos/cpufreq.c:255:1: warning: type defaults to 'int' in declaration of 'EXPORT_SYMBOL_GPL' [-Wimplicit-int]
-arch/arm/mach-exynos/cpufreq.c:255:1: warning: parameter names (without types) in function declaration [enabled by default]
-arch/arm/mach-exynos/cpufreq.c:364:1: warning: data definition has no type or storage class [enabled by default]
-arch/arm/mach-exynos/cpufreq.c:364:1: warning: type defaults to 'int' in declaration of 'EXPORT_SYMBOL_GPL' [-Wimplicit-int]
-arch/arm/mach-exynos/cpufreq.c:364:1: warning: parameter names (without types) in function declaration [enabled by default]
-arch/arm/mach-exynos/cpufreq.c:385:1: warning: data definition has no type or storage class [enabled by default]
-arch/arm/mach-exynos/cpufreq.c:385:1: warning: type defaults to 'int' in declaration of 'EXPORT_SYMBOL_GPL' [-Wimplicit-int]
-arch/arm/mach-exynos/cpufreq.c:385:1: warning: parameter names (without types) in function declaration [enabled by default]
-arch/arm/mach-exynos/cpufreq.c:565:1: warning: data definition has no type or storage class [enabled by default]arch/arm/mach-exynos/pm-exynos4.c:420:15: error: variable 'exynos4_pm_driver' has initializer but incomplete type
-arch/arm/mach-exynos/cpufreq.c:565:1: warning: type defaults to 'int' in declaration of 'EXPORT_SYMBOL_GPL' [-Wimplicit-int]
-arch/arm/mach-exynos/cpufreq.c:565:1: warning: parameter names (without types) in function declaration [enabled by default]
-arch/arm/mach-exynos/cpufreq.c:574:1: warning: data definition has no type or storage class [enabled by default]
-arch/arm/mach-exynos/cpufreq.c:574:1: warning: type defaults to 'int' in declaration of 'EXPORT_SYMBOL_GPL' [-Wimplicit-int]
-arch/arm/mach-exynos/cpufreq.c:574:1: warning: parameter names (without types) in function declaration [enabled by default]
-arch/arm/mach-exynos/cpufreq.c:580:1: warning: data definition has no type or storage class [enabled by default]
-arch/arm/mach-exynos/cpufreq.c:580:1: warning: type defaults to 'int' in declaration of 'EXPORT_SYMBOL_GPL' [-Wimplicit-int]
-arch/arm/mach-exynos/cpufreq.c:580:1: warning: parameter names (without types) in function declaration [enabled by default]
-arch/arm/mach-exynos/cpufreq.c: In function 'acpuclk_set_vdd':
-arch/arm/mach-exynos/pm-exynos4.c:421:2: error: unknown field 'add' specified in initializer
-arch/arm/mach-exynos/pm-exynos4.c:421:2: warning: excess elements in struct initializer [enabled by default]
-arch/arm/mach-exynos/pm-exynos4.c:421:2: warning: (near initialization for 'exynos4_pm_driver') [enabled by default]
-arch/arm/mach-exynos/pm-exynos4.c: In function 'exynos4_pm_drvinit':
-arch/arm/mach-exynos/pm-exynos4.c:439:2: error: implicit declaration of function 'sysdev_driver_register' [-Werror=implicit-function-declaration]
-arch/arm/mach-exynos/pm-exynos4.c: In function 'exynos4_pm_suspend':
-arch/arm/mach-exynos/pm-exynos4.c:458:17: error: 'exynos4_l2cc_save' undeclared (first use in this function)
-arch/arm/mach-exynos/pm-exynos4.c:458:17: note: each undeclared identifier is reported only once for each function it appears in
-
-arch/arm/mach-exynos/cpufreq.c:897:11: error: 'CPU_UV_MV_MIN' undeclared (first use in this function)
-arch/arm/mach-exynos/cpufreq.c:897:11: note: each undeclared identifier is reported only once for each function it appears in
-arch/arm/mach-exynos/pm-exynos4.c:458:36: error: bit-field '<anonymous>' width not an integer constantarch/arm/mach-exynos/cpufreq.c:897:11: warning: comparison of distinct pointer types lacks a cast [enabled by default]
-
-arch/arm/mach-exynos/cpufreq.c:897:11: warning: comparison of distinct pointer types lacks a cast [enabled by default]
-arch/arm/mach-exynos/cpufreq.c:897:11: error: 'CPU_UV_MV_MAX' undeclared (first use in this function)
-arch/arm/mach-exynos/cpufreq.c:897:11: warning: comparison of distinct pointer types lacks a cast [enabled by default]
-arch/arm/mach-exynos/cpufreq.c:899:11: warning: comparison of distinct pointer types lacks a cast [enabled by default]
-arch/arm/mach-exynos/cpufreq.c:899:11: warning: comparison of distinct pointer types lacks a cast [enabled by default]
-arch/arm/mach-exynos/cpufreq.c:899:11: warning: comparison of distinct pointer types lacks a cast [enabled by default]
-arch/arm/mach-exynos/cpufreq.c: In function 'store_UV_mV_table':
-arch/arm/mach-exynos/cpufreq.c:951:14: error: 'CPU_UV_MV_MAX' undeclared (first use in this function)
-arch/arm/mach-exynos/cpufreq.c:955:19: error: 'CPU_UV_MV_MIN' undeclared (first use in this function)
-cc1: some warnings being treated as errorsdrivers/gpio/gpio-samsung.c:42:27: fatal error: plat/gpio-fns.h: No such file or directory
-compilation terminated.
-make[2]: *** [drivers/gpio/gpio-samsung.o] Error 1
-make[1]: *** [drivers/gpio] Error 2
 make[1]: *** Waiting for unfinished jobs....
-arch/arm/mach-exynos/cpuidle-exynos4.c:90:36: error: expected ')' before 'uint'
+drivers/base/s5p-iommu.c:42: error: conflicting types for 'iommu_domain_alloc'
+include/linux/iommu.h:149: note: previous definition of 'iommu_domain_alloc' was here
+drivers/base/s5p-iommu.c: In function 'iommu_domain_alloc':
+drivers/base/s5p-iommu.c:51: error: 'struct iommu_ops' has no member named 'domain_init'
+drivers/base/s5p-iommu.c: At top level:
+drivers/base/s5p-iommu.c:64: error: redefinition of 'iommu_domain_free'
+include/linux/iommu.h:154: note: previous definition of 'iommu_domain_free' was here
+drivers/base/s5p-iommu.c: In function 'iommu_domain_free':
+drivers/base/s5p-iommu.c:66: error: 'struct iommu_ops' has no member named 'domain_destroy'
+drivers/base/s5p-iommu.c: At top level:
+drivers/base/s5p-iommu.c:71: error: redefinition of 'iommu_attach_device'
+include/linux/iommu.h:158: note: previous definition of 'iommu_attach_device' was here
+drivers/base/s5p-iommu.c: In function 'iommu_attach_device':
+drivers/base/s5p-iommu.c:73: error: 'struct iommu_ops' has no member named 'attach_dev'
+drivers/base/s5p-iommu.c: At top level:
+drivers/base/s5p-iommu.c:77: error: redefinition of 'iommu_detach_device'
+include/linux/iommu.h:164: note: previous definition of 'iommu_detach_device' was here
+drivers/base/s5p-iommu.c: In function 'iommu_detach_device':
+drivers/base/s5p-iommu.c:79: error: 'struct iommu_ops' has no member named 'detach_dev'
+drivers/base/s5p-iommu.c: At top level:
+drivers/base/s5p-iommu.c:83: error: redefinition of 'iommu_iova_to_phys'
+include/linux/iommu.h:181: note: previous definition of 'iommu_iova_to_phys' was here
+drivers/base/s5p-iommu.c: In function 'iommu_iova_to_phys':
+drivers/base/s5p-iommu.c:86: error: 'struct iommu_ops' has no member named 'iova_to_phys'
+drivers/base/s5p-iommu.c: In function 'iommu_domain_has_cap':
+drivers/base/s5p-iommu.c:93: error: 'struct iommu_ops' has no member named 'domain_has_cap'
+drivers/base/s5p-iommu.c: At top level:
+drivers/base/s5p-iommu.c:97: error: redefinition of 'iommu_map'
+include/linux/iommu.h:169: note: previous definition of 'iommu_map' was here
+drivers/base/s5p-iommu.c: In function 'iommu_map':
+drivers/base/s5p-iommu.c:108: error: 'struct iommu_ops' has no member named 'map'
+drivers/base/s5p-iommu.c: At top level:
+drivers/base/s5p-iommu.c:112: error: redefinition of 'iommu_unmap'
+include/linux/iommu.h:175: note: previous definition of 'iommu_unmap' was here
+drivers/base/s5p-iommu.c: In function 'iommu_unmap':
+drivers/base/s5p-iommu.c:122: error: 'struct iommu_ops' has no member named 'unmap'
+make[2]: *** [drivers/base/s5p-iommu.o] Error 1
+make[1]: *** [drivers/base] Error 2
+make[1]: *** Waiting for unfinished jobs....
+arch/arm/mach-exynos/pm-exynos4.c:420: error: variable 'exynos4_pm_driver' has initializer but incomplete type
+arch/arm/mach-exynos/pm-exynos4.c:421: error: unknown field 'add' specified in initializer
+arch/arm/mach-exynos/pm-exynos4.c:421: warning: excess elements in struct initializer
+arch/arm/mach-exynos/pm-exynos4.c:421: warning: (near initialization for 'exynos4_pm_driver')
+arch/arm/mach-exynos/pm-exynos4.c: In function 'exynos4_pm_drvinit':
+arch/arm/mach-exynos/pm-exynos4.c:439: warning: implicit declaration of function 'sysdev_driver_register'
+arch/arm/mach-exynos/pm-exynos4.c: In function 'exynos4_pm_suspend':
+arch/arm/mach-exynos/pm-exynos4.c:458: error: 'exynos4_l2cc_save' undeclared (first use in this function)
+arch/arm/mach-exynos/pm-exynos4.c:458: error: (Each undeclared identifier is reported only once
+arch/arm/mach-exynos/pm-exynos4.c:458: error: for each function it appears in.)
+arch/arm/mach-exynos/pm-exynos4.c:458: warning: type defaults to 'int' in declaration of 'type name'
+arch/arm/mach-exynos/pm-exynos4.c:458: warning: type defaults to 'int' in declaration of 'type name'
+arch/arm/mach-exynos/pm-exynos4.c:458: error: negative width in bit-field '<anonymous>'
 make[1]: *** [arch/arm/mach-exynos/pm-exynos4.o] Error 1
-
-arch/arm/mach-exynos/cpuidle-exynos4.c:103:46: error: expected ')' before 'uint'
-arch/arm/mach-exynos/cpuidle-exynos4.c:393:1: warning: data definition has no type or storage class [enabled by default]
-arch/arm/mach-exynos/cpuidle-exynos4.c:393:1: warning: type defaults to 'int' in declaration of 'EXPORT_SYMBOL' [-Wimplicit-int]
-arch/arm/mach-exynos/cpuidle-exynos4.c:393:1: warning: parameter names (without types) in function declaration [enabled by default]
-arch/arm/mach-exynos/cpuidle-exynos4.c: In function 'vfp_enable':
-arch/arm/mach-exynos/cpuidle-exynos4.c:521:2: error: implicit declaration of function 'get_copro_access' [-Werror=implicit-function-declaration]
-arch/arm/mach-exynos/cpuidle-exynos4.c:526:2: error: implicit declaration of function 'set_copro_access' [-Werror=implicit-function-declaration]
-arch/arm/mach-exynos/cpuidle-exynos4.c:526:2: error: implicit declaration of function 'CPACC_FULL' [-Werror=implicit-function-declaration]
-arch/arm/mach-exynos/cpuidle-exynos4.c: In function 'exynos4_enter_core0_aftr':
-arch/arm/mach-exynos/cpuidle-exynos4.c:565:26: error: 'PLAT_PHYS_OFFSET' undeclared (first use in this function)
-arch/arm/mach-exynos/cpuidle-exynos4.c:565:26: note: each undeclared identifier is reported only once for each function it appears in
-arch/arm/mach-exynos/cpuidle-exynos4.c: In function 'exynos4_enter_core0_lpa':
-arch/arm/mach-exynos/cpuidle-exynos4.c:685:26: error: 'PLAT_PHYS_OFFSET' undeclared (first use in this function)
-arch/arm/mach-exynos/cpuidle-exynos4.c: At top level:make[1]: *** [arch/arm/mach-exynos/cpufreq.o] Error 1
-
-arch/arm/mach-exynos/cpuidle-exynos4.c:757:3: warning: initialization from incompatible pointer type [enabled by default]
-arch/arm/mach-exynos/cpuidle-exynos4.c:757:3: warning: (near initialization for 'exynos4_cpuidle_set[0].enter') [enabled by default]
-arch/arm/mach-exynos/cpuidle-exynos4.c:766:3: warning: initialization from incompatible pointer type [enabled by default]
-arch/arm/mach-exynos/cpuidle-exynos4.c:766:3: warning: (near initialization for 'exynos4_cpuidle_set[1].enter') [enabled by default]
-arch/arm/mach-exynos/cpuidle-exynos4.c:780:12: error: 'THIS_MODULE' undeclared here (not in a function)
-arch/arm/mach-exynos/cpuidle-exynos4.c: In function 'exynos4_enter_lowpower':arch/arm/plat-samsung/pm.c: In function 's3c_pm_enter':
-arch/arm/mach-exynos/cpuidle-exynos4.c:880:3: error: 'struct cpuidle_device' has no member named 'safe_state'
-arch/arm/mach-exynos/cpuidle-exynos4.c:881:18: error: 'struct cpuidle_device' has no member named 'safe_state'
-arch/arm/mach-exynos/cpuidle-exynos4.c:883:5: error: 'struct cpuidle_device' has no member named 'last_state'
-arch/arm/mach-exynos/cpuidle-exynos4.c:890:23: error: 'struct cpuidle_device' has no member named 'states'
-arch/arm/mach-exynos/cpuidle-exynos4.c: In function 'exynos4_cpuidle_notifier_event':
-arch/arm/mach-exynos/cpuidle-exynos4.c:920:3: error: implicit declaration of function 'disable_hlt' [-Werror=implicit-function-declaration]
-arch/arm/mach-exynos/cpuidle-exynos4.c:929:3: error: implicit declaration of function 'enable_hlt' [-Werror=implicit-function-declaration]
-arch/arm/mach-exynos/cpuidle-exynos4.c: In function 'exynos4_init_cpuidle':
-arch/arm/mach-exynos/cpuidle-exynos4.c:1064:18: error: 'struct cpuidle_device' has no member named 'states'
-arch/arm/mach-exynos/cpuidle-exynos4.c:1068:9: error: 'struct cpuidle_device' has no member named 'safe_state'
-arch/arm/mach-exynos/cpuidle-exynos4.c:1068:31: error: 'struct cpuidle_device' has no member named 'states'
-
-arch/arm/plat-samsung/pm.c:346:18: error: 'PLAT_PHYS_OFFSET' undeclared (first use in this function)
-arch/arm/plat-samsung/pm.c:346:18: note: each undeclared identifier is reported only once for each function it appears in
-arch/arm/mach-exynos/cpuidle-exynos4.c: At top level:
-arch/arm/mach-exynos/cpuidle-exynos4.c:185:13: warning: 'exynos4212_gpio_conpdn_reg' defined but not used [-Wunused-function]
-cc1: some warnings being treated as errors
-make[1]: *** [arch/arm/mach-exynos/cpuidle-exynos4.o] Error 1
+arch/arm/plat-samsung/pm.c: In function 's3c_pm_enter':
+arch/arm/plat-samsung/pm.c:346: error: 'PLAT_PHYS_OFFSET' undeclared (first use in this function)
+arch/arm/plat-samsung/pm.c:346: error: (Each undeclared identifier is reported only once
+arch/arm/plat-samsung/pm.c:346: error: for each function it appears in.)
 make[1]: *** [arch/arm/plat-samsung/pm.o] Error 1
 make: *** [arch/arm/plat-samsung] Error 2
-drivers/cpufreq/exynos-cpufreq.c:25:33: error: static declaration of 'exynos_info' follows non-static declaration
-In file included from drivers/cpufreq/exynos-cpufreq.c:21:0:
-arch/arm/mach-exynos/include/mach/cpufreq.h:123:33: note: previous declaration of 'exynos_info' was here
-  CC      sound/soc/samsung/dma.o
-make[2]: *** [drivers/cpufreq/exynos-cpufreq.o] Error 1
-make[1]: *** [drivers/cpufreq] Error 2
-arch/arm/mach-exynos/mach-u1.c:3267:2: warning: excess elements in struct initializer [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3267:2: warning: (near initialization for 'max8997_regulators[0]') [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3268:2: warning: excess elements in struct initializer [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3268:2: warning: (near initialization for 'max8997_regulators[1]') [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3269:2: warning: excess elements in struct initializer [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3269:2: warning: (near initialization for 'max8997_regulators[2]') [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3270:2: warning: excess elements in struct initializer [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3270:2: warning: (near initialization for 'max8997_regulators[3]') [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3271:2: warning: excess elements in struct initializer [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3271:2: warning: (near initialization for 'max8997_regulators[4]') [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3272:2: warning: excess elements in struct initializer [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3272:2: warning: (near initialization for 'max8997_regulators[5]') [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3273:2: warning: excess elements in struct initializer [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3273:2: warning: (near initialization for 'max8997_regulators[6]') [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3274:2: warning: excess elements in struct initializer [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3274:2: warning: (near initialization for 'max8997_regulators[7]') [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3275:2: warning: excess elements in struct initializer [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3275:2: warning: (near initialization for 'max8997_regulators[8]') [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3276:2: warning: excess elements in struct initializer [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3276:2: warning: (near initialization for 'max8997_regulators[9]') [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3277:2: warning: excess elements in struct initializer [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3277:2: warning: (near initialization for 'max8997_regulators[10]') [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3278:2: warning: excess elements in struct initializer [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3278:2: warning: (near initialization for 'max8997_regulators[11]') [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3279:2: warning: excess elements in struct initializer [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3279:2: warning: (near initialization for 'max8997_regulators[12]') [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3280:2: warning: excess elements in struct initializer [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3280:2: warning: (near initialization for 'max8997_regulators[13]') [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3281:2: warning: excess elements in struct initializer [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3281:2: warning: (near initialization for 'max8997_regulators[14]') [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3282:2: warning: excess elements in struct initializer [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3282:2: warning: (near initialization for 'max8997_regulators[15]') [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3283:2: warning: excess elements in struct initializer [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3283:2: warning: (near initialization for 'max8997_regulators[16]') [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3284:2: warning: excess elements in struct initializer [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3284:2: warning: (near initialization for 'max8997_regulators[17]') [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3285:2: warning: excess elements in struct initializer [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3285:2: warning: (near initialization for 'max8997_regulators[18]') [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3286:2: warning: excess elements in struct initializer [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3286:2: warning: (near initialization for 'max8997_regulators[19]') [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3287:2: warning: excess elements in struct initializer [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3287:2: warning: (near initialization for 'max8997_regulators[20]') [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3288:2: warning: excess elements in struct initializer [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3288:2: warning: (near initialization for 'max8997_regulators[21]') [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3289:2: warning: excess elements in struct initializer [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3289:2: warning: (near initialization for 'max8997_regulators[22]') [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3290:2: warning: excess elements in struct initializer [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3290:2: warning: (near initialization for 'max8997_regulators[23]') [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3291:4: error: 'MAX8997_FLASH_CUR' undeclared here (not in a function)
-arch/arm/mach-exynos/mach-u1.c:3291:2: warning: excess elements in struct initializer [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3291:2: warning: (near initialization for 'max8997_regulators[24]') [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3292:4: error: 'MAX8997_MOVIE_CUR' undeclared here (not in a function)
-arch/arm/mach-exynos/mach-u1.c:3292:2: warning: excess elements in struct initializer [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3292:2: warning: (near initialization for 'max8997_regulators[25]') [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3298:15: error: variable 'max8997_power' has initializer but incomplete type
-arch/arm/mach-exynos/mach-u1.c:3299:2: error: unknown field 'batt_detect' specified in initializer
-arch/arm/mach-exynos/mach-u1.c:3299:2: warning: excess elements in struct initializer [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3299:2: warning: (near initialization for 'max8997_power') [enabled by default]
-arch/arm/mach-exynos/mach-u1.c: In function 'max8997_muic_set_safeout':
-arch/arm/mach-exynos/mach-u1.c:3467:14: error: 'CP_USB_MODE' undeclared (first use in this function)
-arch/arm/mach-exynos/mach-u1.c:3467:14: note: each undeclared identifier is reported only once for each function it appears in
-arch/arm/mach-exynos/mach-u1.c:3467:11: warning: comparison between pointer and integer [enabled by default]
-arch/arm/mach-exynos/mach-u1.c: At top level:
-arch/arm/mach-exynos/mach-u1.c:3507:35: error: 'CABLE_TYPE_NONE' undeclared here (not in a function)
-arch/arm/mach-exynos/mach-u1.c:3507:35: warning: initialization makes integer from pointer without a cast [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3507:1: error: initializer element is not constant
-arch/arm/mach-exynos/mach-u1.c: In function 'max8997_muic_charger_cb':sound/soc/samsung/dma.c:485:2: warning: initialization from incompatible pointer type [enabled by default]
-sound/soc/samsung/dma.c:485:2: warning: (near initialization for 'samsung_asoc_platform.pcm_new') [enabled by default]
-sound/soc/samsung/dma.c:504:12: error: 'THIS_MODULE' undeclared here (not in a function)
-sound/soc/samsung/dma.c:524:15: error: expected declaration specifiers or '...' before string constant
-sound/soc/samsung/dma.c:525:20: error: expected declaration specifiers or '...' before string constant
-sound/soc/samsung/dma.c:526:16: error: expected declaration specifiers or '...' before string constant
-sound/soc/samsung/dma.c:527:14: error: expected declaration specifiers or '...' before string constant
+arch/arm/mach-exynos/cpuidle-exynos4.c: In function 'vfp_enable':
+arch/arm/mach-exynos/cpuidle-exynos4.c:522: warning: implicit declaration of function 'get_copro_access'
+arch/arm/mach-exynos/cpuidle-exynos4.c:527: warning: implicit declaration of function 'set_copro_access'
+arch/arm/mach-exynos/cpuidle-exynos4.c:527: warning: implicit declaration of function 'CPACC_FULL'
+arch/arm/mach-exynos/cpuidle-exynos4.c: In function 'exynos4_enter_core0_aftr':
+arch/arm/mach-exynos/cpuidle-exynos4.c:566: error: 'PLAT_PHYS_OFFSET' undeclared (first use in this function)
+arch/arm/mach-exynos/cpuidle-exynos4.c:566: error: (Each undeclared identifier is reported only once
+arch/arm/mach-exynos/cpuidle-exynos4.c:566: error: for each function it appears in.)
+arch/arm/mach-exynos/cpuidle-exynos4.c: In function 'exynos4_enter_core0_lpa':
+arch/arm/mach-exynos/cpuidle-exynos4.c:686: error: 'PLAT_PHYS_OFFSET' undeclared (first use in this function)
+arch/arm/mach-exynos/cpuidle-exynos4.c: At top level:
+arch/arm/mach-exynos/cpuidle-exynos4.c:758: warning: initialization from incompatible pointer type
+arch/arm/mach-exynos/cpuidle-exynos4.c:767: warning: initialization from incompatible pointer type
+arch/arm/mach-exynos/cpuidle-exynos4.c: In function 'exynos4_enter_lowpower':
+arch/arm/mach-exynos/cpuidle-exynos4.c:881: error: 'struct cpuidle_device' has no member named 'safe_state'
+arch/arm/mach-exynos/cpuidle-exynos4.c:882: error: 'struct cpuidle_device' has no member named 'safe_state'
+arch/arm/mach-exynos/cpuidle-exynos4.c:884: error: 'struct cpuidle_device' has no member named 'last_state'
+arch/arm/mach-exynos/cpuidle-exynos4.c:891: error: 'struct cpuidle_device' has no member named 'states'
+arch/arm/mach-exynos/cpuidle-exynos4.c: In function 'exynos4_cpuidle_notifier_event':
+arch/arm/mach-exynos/cpuidle-exynos4.c:921: warning: implicit declaration of function 'disable_hlt'
+arch/arm/mach-exynos/cpuidle-exynos4.c:930: warning: implicit declaration of function 'enable_hlt'
+arch/arm/mach-exynos/cpuidle-exynos4.c: In function 'exynos4_init_cpuidle':
+arch/arm/mach-exynos/cpuidle-exynos4.c:1065: error: 'struct cpuidle_device' has no member named 'states'
+arch/arm/mach-exynos/cpuidle-exynos4.c:1069: error: 'struct cpuidle_device' has no member named 'safe_state'
+arch/arm/mach-exynos/cpuidle-exynos4.c:1069: error: 'struct cpuidle_device' has no member named 'states'
+make[1]: *** [arch/arm/mach-exynos/cpuidle-exynos4.o] Error 1
+drivers/samsung/fm_si4709/Si4709_dev.c: In function 'Si4709_dev_init':
+drivers/samsung/fm_si4709/Si4709_dev.c:115: error: 'system_rev' undeclared (first use in this function)
+drivers/samsung/fm_si4709/Si4709_dev.c:115: error: (Each undeclared identifier is reported only once
+drivers/samsung/fm_si4709/Si4709_dev.c:115: error: for each function it appears in.)
+drivers/power/sec_battery_u1.c: In function 'sec_bat_set_property':
+drivers/power/sec_battery_u1.c:677: error: 'POWER_SUPPLY_TYPE_MISC' undeclared (first use in this function)
+drivers/power/sec_battery_u1.c:677: error: (Each undeclared identifier is reported only once
+drivers/power/sec_battery_u1.c:677: error: for each function it appears in.)
+drivers/gpu/ion/ion.c: In function 'ion_exynos_get_user_pages':drivers/power/max17042_fuelgauge_u1.c:51: error: field 'fuel_alert_wake_lock' has incomplete type
+drivers/gpu/ion/ion.c:478: warning: passing argument 1 of 'mutex_lock' from incompatible pointer type
+include/linux/mutex.h:152: note: expected 'struct mutex *' but argument is of type 'struct rw_semaphore *'
+drivers/gpu/ion/ion.c:479: warning: passing argument 1 of 'rb_first' from incompatible pointer type
+include/linux/rbtree.h:161: note: expected 'const struct rb_root *' but argument is of type 'struct plist_head *'
+drivers/gpu/ion/ion.c:480: warning: initialization from incompatible pointer type
+drivers/gpu/ion/ion.c:482: error: 'struct ion_client' has no member named 'heap_mask'
+drivers/gpu/ion/ion.c:491: warning: passing argument 1 of 'mutex_unlock' from incompatible pointer type
+include/linux/mutex.h:169: note: expected 'struct mutex *' but argument is of type 'struct rw_semaphore *'
 
-arch/arm/mach-exynos/mach-u1.c:3527:7: error: 'CABLE_TYPE_OTG' undeclared (first use in this function)
-arch/arm/mach-exynos/mach-u1.c:3528:7: error: 'CABLE_TYPE_JIG_UART_OFF' undeclared (first use in this function)
-arch/arm/mach-exynos/mach-u1.c:3529:7: error: 'CABLE_TYPE_MHL' undeclared (first use in this function)
-arch/arm/mach-exynos/mach-u1.c:3533:7: error: 'CABLE_TYPE_USB' undeclared (first use in this function)
-arch/arm/mach-exynos/mach-u1.c:3534:7: error: 'CABLE_TYPE_JIG_USB_OFF' undeclared (first use in this function)
-arch/arm/mach-exynos/mach-u1.c:3535:7: error: 'CABLE_TYPE_JIG_USB_ON' undeclared (first use in this function)
-arch/arm/mach-exynos/mach-u1.c:3539:7: error: 'CABLE_TYPE_MHL_VB' undeclared (first use in this function)
-arch/arm/mach-exynos/mach-u1.c:3540:18: error: 'POWER_SUPPLY_TYPE_MISC' undeclared (first use in this function)
-arch/arm/mach-exynos/mach-u1.c:3540:16: warning: assignment makes integer from pointer without a cast [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3543:7: error: 'CABLE_TYPE_TA' undeclared (first use in this function)
-arch/arm/mach-exynos/mach-u1.c:3544:7: error: 'CABLE_TYPE_CARDOCK' undeclared (first use in this function)
-arch/arm/mach-exynos/mach-u1.c:3545:7: error: 'CABLE_TYPE_DESKDOCK' undeclared (first use in this function)
-arch/arm/mach-exynos/mach-u1.c:3546:7: error: 'CABLE_TYPE_JIG_UART_OFF_VB' undeclared (first use in this function)
-arch/arm/mach-exynos/mach-u1.c: In function 'max8997_muic_mhl_cb':
-arch/arm/mach-exynos/mach-u1.c:3686:18: error: 'MAX8997_MUIC_ATTACHED' undeclared (first use in this function)
-arch/arm/mach-exynos/mach-u1.c:3686:15: warning: comparison between pointer and integer [enabled by default]
-arch/arm/mach-exynos/mach-u1.c: In function 'max8997_muic_cfg_uart_gpio':make[3]: *** [sound/soc/samsung/dma.o] Error 1
+drivers/power/sec_battery_u1.c: In function 'sec_bat_show_property':
+drivers/power/sec_battery_u1.c:2647: error: 'system_rev' undeclared (first use in this function)
+drivers/power/max17042_fuelgauge_u1.c: In function 'max17042_work':
+drivers/power/max17042_fuelgauge_u1.c:509: warning: implicit declaration of function 'wake_lock'
+drivers/power/max17042_fuelgauge_u1.c:522: warning: implicit declaration of function 'wake_unlock'
+drivers/power/sec_battery_u1.c: In function 'sec_bat_probe':
+drivers/power/sec_battery_u1.c:3129: error: 'system_rev' undeclared (first use in this function)
+drivers/power/max17042_fuelgauge_u1.c: In function 'max17042_probe':make[3]: *** [drivers/samsung/fm_si4709/Si4709_dev.o] Error 1
+make[3]: *** Waiting for unfinished jobs....
 
-arch/arm/mach-exynos/mach-u1.c:3741:15: error: 'UART_PATH_AP' undeclared (first use in this function)
-arch/arm/mach-exynos/mach-u1.c:3741:30: error: 'UART_PATH_CP' undeclared (first use in this function)make[2]: *** [sound/soc/samsung] Error 2
-
-arch/arm/mach-exynos/mach-u1.c:3741:7: warning: assignment makes integer from pointer without a cast [enabled by default]
-make[1]: *** [sound/soc] Error 2
-make: *** [sound] Error 2
-arch/arm/mach-exynos/mach-u1.c: In function 'max8997_muic_jig_uart_cb':
-arch/arm/mach-exynos/mach-u1.c:3757:16: error: 'UART_PATH_AP' undeclared (first use in this function)
-arch/arm/mach-exynos/mach-u1.c:3757:13: warning: comparison between pointer and integer [enabled by default]
-arch/arm/mach-exynos/mach-u1.c: At top level:
-arch/arm/mach-exynos/mach-u1.c:3779:15: error: variable 'max8997_muic' has initializer but incomplete type
-arch/arm/mach-exynos/mach-u1.c:3780:2: error: unknown field 'usb_cb' specified in initializer
-arch/arm/mach-exynos/mach-u1.c:3780:12: error: 'max8997_muic_usb_cb' undeclared here (not in a function)
-arch/arm/mach-exynos/mach-u1.c:3780:2: warning: excess elements in struct initializer [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3780:2: warning: (near initialization for 'max8997_muic') [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3781:2: error: unknown field 'charger_cb' specified in initializer
-arch/arm/mach-exynos/mach-u1.c:3781:2: warning: excess elements in struct initializer [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3781:2: warning: (near initialization for 'max8997_muic') [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3782:2: error: unknown field 'mhl_cb' specified in initializer
-arch/arm/mach-exynos/mach-u1.c:3782:2: warning: excess elements in struct initializer [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3782:2: warning: (near initialization for 'max8997_muic') [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3783:2: error: unknown field 'is_mhl_attached' specified in initializer
-arch/arm/mach-exynos/mach-u1.c:3783:2: warning: excess elements in struct initializer [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3783:2: warning: (near initialization for 'max8997_muic') [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3784:2: error: unknown field 'set_safeout' specified in initializer
-arch/arm/mach-exynos/mach-u1.c:3784:2: warning: excess elements in struct initializer [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3784:2: warning: (near initialization for 'max8997_muic') [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3785:2: error: unknown field 'init_cb' specified in initializer
-arch/arm/mach-exynos/mach-u1.c:3785:2: warning: excess elements in struct initializer [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3785:2: warning: (near initialization for 'max8997_muic') [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3786:2: error: unknown field 'deskdock_cb' specified in initializer
-arch/arm/mach-exynos/mach-u1.c:3786:2: warning: excess elements in struct initializer [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3786:2: warning: (near initialization for 'max8997_muic') [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3787:2: error: unknown field 'cardock_cb' specified in initializer
-arch/arm/mach-exynos/mach-u1.c:3787:2: warning: excess elements in struct initializer [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3787:2: warning: (near initialization for 'max8997_muic') [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3789:2: error: unknown field 'cfg_uart_gpio' specified in initializer
-arch/arm/mach-exynos/mach-u1.c:3789:2: warning: excess elements in struct initializer [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3789:2: warning: (near initialization for 'max8997_muic') [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3791:2: error: unknown field 'jig_uart_cb' specified in initializer
-arch/arm/mach-exynos/mach-u1.c:3791:2: warning: excess elements in struct initializer [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3791:2: warning: (near initialization for 'max8997_muic') [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3795:2: error: unknown field 'host_notify_cb' specified in initializer
-arch/arm/mach-exynos/mach-u1.c:3795:2: warning: excess elements in struct initializer [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3795:2: warning: (near initialization for 'max8997_muic') [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3798:2: error: unknown field 'gpio_uart_sel' specified in initializer
-arch/arm/mach-exynos/mach-u1.c:3798:2: warning: excess elements in struct initializer [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3798:2: warning: (near initialization for 'max8997_muic') [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3800:2: error: unknown field 'gpio_usb_sel' specified in initializer
-arch/arm/mach-exynos/mach-u1.c:3800:2: warning: excess elements in struct initializer [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3800:2: warning: (near initialization for 'max8997_muic') [enabled by default]
-arch/arm/mach-exynos/mach-u1.c: In function 'max8997_set_arm_voltage_table':
-arch/arm/mach-exynos/mach-u1.c:3808:40: error: dereferencing pointer to incomplete type
-arch/arm/mach-exynos/mach-u1.c:3808:40: error: request for member 'set_buck1_dvs_table' in something not a structure or union
-arch/arm/mach-exynos/mach-u1.c:3809:18: error: dereferencing pointer to incomplete type
-arch/arm/mach-exynos/mach-u1.c:3809:18: error: request for member 'set_buck1_dvs_table' in something not a structure or union
-arch/arm/mach-exynos/mach-u1.c:3809:39: error: called object '<erroneous-expression>' is not a function
-arch/arm/mach-exynos/mach-u1.c:3809:3: warning: statement with no effect [-Wunused-value]
-arch/arm/mach-exynos/mach-u1.c: At top level:
-arch/arm/mach-exynos/mach-u1.c:3825:2: error: unknown field 'buck1_max_vol' specified in initializer
-arch/arm/mach-exynos/mach-u1.c:3825:2: warning: missing braces around initializer [-Wmissing-braces]
-arch/arm/mach-exynos/mach-u1.c:3825:2: warning: (near initialization for 'exynos4_max8997_info.buck2_voltage') [-Wmissing-braces]
-arch/arm/mach-exynos/mach-u1.c:3826:2: error: unknown field 'buck2_max_vol' specified in initializer
-arch/arm/mach-exynos/mach-u1.c:3827:2: error: unknown field 'buck5_max_vol' specified in initializer
-arch/arm/mach-exynos/mach-u1.c:3828:2: error: unknown field 'buck_set1' specified in initializer
-arch/arm/mach-exynos/mach-u1.c:3829:2: error: unknown field 'buck_set2' specified in initializer
-arch/arm/mach-exynos/mach-u1.c:3830:2: error: unknown field 'buck_set3' specified in initializer
-arch/arm/mach-exynos/mach-u1.c:3831:2: error: unknown field 'buck_ramp_en' specified in initializer
-arch/arm/mach-exynos/mach-u1.c:3831:2: warning: initialization makes pointer from integer without a cast [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3831:2: warning: (near initialization for 'exynos4_max8997_info.muic_pdata') [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3832:2: error: unknown field 'buck_ramp_delay' specified in initializer
-arch/arm/mach-exynos/mach-u1.c:3832:2: warning: initialization makes pointer from integer without a cast [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3832:2: warning: (near initialization for 'exynos4_max8997_info.haptic_pdata') [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3833:2: error: unknown field 'flash_cntl_val' specified in initializer
-arch/arm/mach-exynos/mach-u1.c:3833:2: warning: initialization makes pointer from integer without a cast [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3833:2: warning: (near initialization for 'exynos4_max8997_info.led_pdata') [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3835:2: error: unknown field 'power' specified in initializer
-arch/arm/mach-exynos/mach-u1.c:3835:2: warning: excess elements in struct initializer [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3835:2: warning: (near initialization for 'exynos4_max8997_info') [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3839:2: error: unknown field 'muic' specified in initializer
-arch/arm/mach-exynos/mach-u1.c:3839:2: warning: excess elements in struct initializer [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3839:2: warning: (near initialization for 'exynos4_max8997_info') [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3840:2: error: unknown field 'register_buck1_dvs_funcs' specified in initializer
-arch/arm/mach-exynos/mach-u1.c:3840:2: warning: excess elements in struct initializer [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:3840:2: warning: (near initialization for 'exynos4_max8997_info') [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:5081:3: error: unknown field 'isr_hook' specified in initializer
-arch/arm/mach-exynos/mach-u1.c:5081:3: warning: initialization makes integer from pointer without a cast [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:5081:3: warning: (near initialization for 'u1_buttons[0].debounce_interval') [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:5090:3: error: unknown field 'isr_hook' specified in initializer
-arch/arm/mach-exynos/mach-u1.c:5090:3: warning: initialization makes integer from pointer without a cast [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:5090:3: warning: (near initialization for 'u1_buttons[1].debounce_interval') [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:5099:3: error: unknown field 'isr_hook' specified in initializer
-arch/arm/mach-exynos/mach-u1.c:5099:3: warning: initialization makes integer from pointer without a cast [enabled by default]
-arch/arm/mach-exynos/mach-u1.c:5099:3: warning: (near initialization for 'u1_buttons[2].debounce_interval') [enabled by default]
+drivers/power/max17042_fuelgauge_u1.c:921: warning: implicit declaration of function 'wake_lock_init'
+drivers/power/max17042_fuelgauge_u1.c:921: error: 'WAKE_LOCK_SUSPEND' undeclared (first use in this function)
+drivers/power/max17042_fuelgauge_u1.c:921: error: (Each undeclared identifier is reported only once
+drivers/power/max17042_fuelgauge_u1.c:921: error: for each function it appears in.)
+drivers/power/max17042_fuelgauge_u1.c:952: warning: implicit declaration of function 'wake_lock_destroy'
+make[2]: *** [drivers/power/sec_battery_u1.o] Error 1
+make[2]: *** Waiting for unfinished jobs....
+make[2]: *** [drivers/power/max17042_fuelgauge_u1.o] Error 1
+make[3]: *** [drivers/gpu/ion/ion.o] Error 1
+make[3]: *** Waiting for unfinished jobs....
+drivers/power/max8997_charger_u1.c: In function 'max8997_chg_charger_irq':
+drivers/power/max8997_charger_u1.c:335: error: 'system_rev' undeclared (first use in this function)
+drivers/power/max8997_charger_u1.c:335: error: (Each undeclared identifier is reported only once
+drivers/power/max8997_charger_u1.c:335: error: for each function it appears in.)
+make[2]: *** [drivers/power/max8997_charger_u1.o] Error 1
+make[1]: *** [drivers/power] Error 2
 drivers/mmc/host/sdhci-s3c.c: In function 'sdhci_s3c_gpio_card_detect_thread':
-drivers/mmc/host/sdhci-s3c.c:409:4: error: implicit declaration of function 'mmc_host_sd_set_present' [-Werror=implicit-function-declaration]
-drivers/mmc/host/sdhci-s3c.c:411:4: error: implicit declaration of function 'mmc_host_sd_clear_present' [-Werror=implicit-function-declaration]
-drivers/mmc/host/sdhci-s3c.c:413:3: error: implicit declaration of function 'mmc_host_sd_present' [-Werror=implicit-function-declaration]
-arch/arm/mach-exynos/mach-u1.c:6599:21: error: 'cm3663_pdata' undeclared here (not in a function)
-arch/arm/mach-exynos/mach-u1.c:6599:3: error: initializer element is not constant
-arch/arm/mach-exynos/mach-u1.c:6599:3: error: (near initialization for 'i2c_devs11_emul[0].platform_data')
+drivers/mmc/host/sdhci-s3c.c:410: warning: implicit declaration of function 'mmc_host_sd_set_present'
+drivers/mmc/host/sdhci-s3c.c:412: warning: implicit declaration of function 'mmc_host_sd_clear_present'
+drivers/mmc/host/sdhci-s3c.c:414: warning: implicit declaration of function 'mmc_host_sd_present'
 drivers/mmc/host/sdhci-s3c.c: In function 'sdhci_s3c_probe':
-drivers/mmc/host/sdhci-s3c.c:623:7: error: 'struct sdhci_host' has no member named 'vmmc_name'
-drivers/mmc/host/sdhci-s3c.c: In function 'sdhci_s3c_suspend':
-drivers/mmc/host/sdhci-s3c.c:780:2: error: too many arguments to function 'sdhci_suspend_host'
-In file included from drivers/mmc/host/sdhci-s3c.c:29:0:
-drivers/mmc/host/sdhci.h:380:12: note: declared here
-drivers/mmc/host/sdhci-s3c.c: In function 'sdhci_s3c_shutdown':
-drivers/mmc/host/sdhci-s3c.c:789:2: error: implicit declaration of function 'sdhci_shutdown_host' [-Werror=implicit-function-declaration]
-drivers/mmc/host/sdhci-s3c.c: At top level:
-drivers/mmc/host/sdhci-s3c.c:813:12: error: 'THIS_MODULE' undeclared here (not in a function)
-drivers/mmc/host/sdhci-s3c.c:835:20: error: expected declaration specifiers or '...' before string constant
-drivers/mmc/host/sdhci-s3c.c:836:15: error: expected declaration specifiers or '...' before string constant
-drivers/mmc/host/sdhci-s3c.c:837:16: error: expected declaration specifiers or '...' before string constant
-drivers/mmc/host/sdhci-s3c.c:838:14: error: expected declaration specifiers or '...' before string constant
-cc1: some warnings being treated as errors
-make[3]: *** [drivers/mmc/host/sdhci-s3c.o] Error 1
+drivers/mmc/host/sdhci-s3c.c:624: error: 'struct sdhci_host' has no member named 'vmmc_name'
+drivers/mmc/host/sdhci-s3c.c: In function 'sdhci_s3c_suspend':drivers/gpu/ion/exynos/exynos_ion.c:387: warning: initialization from incompatible pointer type
+
+drivers/mmc/host/sdhci-s3c.c:781: error: too many arguments to function 'sdhci_suspend_host'
+drivers/mmc/host/sdhci-s3c.c: In function 'sdhci_s3c_shutdown':drivers/gpu/ion/exynos/exynos_ion.c: In function 'ion_exynos_contig_heap_unmap_dma':
+drivers/mmc/host/sdhci-s3c.c:790: warning: implicit declaration of function 'sdhci_shutdown_host'
+
+drivers/gpu/ion/exynos/exynos_ion.c:535: error: 'struct ion_buffer' has no member named 'sglist'
+drivers/gpu/ion/exynos/exynos_ion.c: At top level:
+drivers/gpu/ion/exynos/exynos_ion.c:568: warning: initialization from incompatible pointer type
+drivers/gpu/ion/exynos/exynos_ion.c:811: warning: initialization from incompatible pointer typemake[3]: *** [drivers/mmc/host/sdhci-s3c.o] Error 1
 make[2]: *** [drivers/mmc/host] Error 2
 make[1]: *** [drivers/mmc] Error 2
-arch/arm/mach-exynos/mach-u1.c:8119:2: error: unknown field 'boot_params' specified in initializer
-drivers/input/keyboard/cypress/cypress-touchkey.c: In function 'touchkey_work_func':
-drivers/input/keyboard/cypress/cypress-touchkey.c:842:6: warning: unused variable 'status' [-Wunused-variable]
-drivers/input/keyboard/cypress/cypress-touchkey.c: At top level:
-drivers/input/keyboard/cypress/cypress-touchkey.c:1092:5: error: unknown field 'level' specified in initializer
-drivers/input/keyboard/cypress/cypress-touchkey.c:1092:5: warning: excess elements in struct initializer [enabled by default]
-drivers/input/keyboard/cypress/cypress-touchkey.c:1092:5: warning: (near initialization for 'bln_suspend_data') [enabled by default]
-drivers/input/keyboard/cypress/cypress-touchkey.c:1093:5: error: unknown field 'resume' specified in initializer
-drivers/input/keyboard/cypress/cypress-touchkey.c:1093:5: warning: excess elements in struct initializer [enabled by default]
-drivers/input/keyboard/cypress/cypress-touchkey.c:1093:5: warning: (near initialization for 'bln_suspend_data') [enabled by default]
-drivers/input/keyboard/cypress/cypress-touchkey.c: In function 'led_timeout_write':
-drivers/input/keyboard/cypress/cypress-touchkey.c:1314:4: warning: suggest explicit braces to avoid ambiguous 'else' [-Wparentheses]make[1]: *** [arch/arm/mach-exynos/mach-u1.o] Error 1
+drivers/samsung/fm_si4709/Si4709_main.c: In function 'Si4709_driver_init':
+drivers/gpu/ion/exynos/exynos_ion.c: In function 'ion_exynos_heap_msync':
+drivers/gpu/ion/exynos/exynos_ion.c:874: warning: implicit declaration of function 'ion_share'
+drivers/gpu/ion/exynos/exynos_ion.c:874: warning: assignment makes pointer from integer without a cast
 
+drivers/samsung/fm_si4709/Si4709_main.c:780: error: 'system_rev' undeclared (first use in this function)drivers/gpu/ion/exynos/exynos_ion.c:881: warning: implicit declaration of function 'ion_map_dma'
+drivers/gpu/ion/exynos/exynos_ion.c:881: warning: assignment makes pointer from integer without a cast
+drivers/gpu/ion/exynos/exynos_ion.c:960: warning: implicit declaration of function 'ion_unmap_dma'
+drivers/gpu/ion/exynos/exynos_ion.c:958: warning: label 'done' defined but not used
+drivers/gpu/ion/exynos/exynos_ion.c: In function 'exynos_heap_ioctl':
+drivers/samsung/fm_si4709/Si4709_main.c:780: error: (Each undeclared identifier is reported only once
+drivers/samsung/fm_si4709/Si4709_main.c:780: error: for each function it appears in.)
+
+drivers/gpu/ion/exynos/exynos_ion.c:999: warning: implicit declaration of function 'ion_import_fd'
+drivers/gpu/ion/exynos/exynos_ion.c:999: warning: assignment makes pointer from integer without a cast
+drivers/gpu/ion/exynos/exynos_ion.c:1018: warning: assignment makes pointer from integer without a cast
+make[3]: *** [drivers/samsung/fm_si4709/Si4709_main.o] Error 1
+make[2]: *** [drivers/samsung/fm_si4709] Error 2
+make[1]: *** [drivers/samsung] Error 2
+make[4]: *** [drivers/gpu/ion/exynos/exynos_ion.o] Error 1
+make[3]: *** [drivers/gpu/ion/exynos] Error 2
+make[2]: *** [drivers/gpu/ion] Error 2
+make[1]: *** [drivers/gpu] Error 2
+drivers/regulator/max8997.c: In function 'max8997_pmic_probe':
+drivers/regulator/max8997.c:1366: error: too few arguments to function 'regulator_register'
+make[2]: *** [drivers/regulator/max8997.o] Error 1
+make[1]: *** [drivers/regulator] Error 2
+arch/arm/mach-exynos/mach-u1.c: In function 'cam_cfg_gpio':
+arch/arm/mach-exynos/mach-u1.c:1549: warning: unused variable 'ret'
+arch/arm/mach-exynos/mach-u1.c: In function 'max8997_muic_charger_cb':
+arch/arm/mach-exynos/mach-u1.c:3541: error: 'POWER_SUPPLY_TYPE_MISC' undeclared (first use in this function)
+arch/arm/mach-exynos/mach-u1.c:3541: error: (Each undeclared identifier is reported only once
+arch/arm/mach-exynos/mach-u1.c:3541: error: for each function it appears in.)
+arch/arm/mach-exynos/mach-u1.c: At top level:
+arch/arm/mach-exynos/mach-u1.c:3781: error: 'max8997_muic_usb_cb' undeclared here (not in a function)
+arch/arm/mach-exynos/mach-u1.c: In function 'max8922_cfg_gpio':
+arch/arm/mach-exynos/mach-u1.c:4118: error: 'system_rev' undeclared (first use in this function)
+arch/arm/mach-exynos/mach-u1.c: At top level:
+arch/arm/mach-exynos/mach-u1.c:5082: error: unknown field 'isr_hook' specified in initializer
+arch/arm/mach-exynos/mach-u1.c:5082: warning: initialization makes integer from pointer without a cast
+arch/arm/mach-exynos/mach-u1.c:5091: error: unknown field 'isr_hook' specified in initializer
+arch/arm/mach-exynos/mach-u1.c:5091: warning: initialization makes integer from pointer without a cast
+arch/arm/mach-exynos/mach-u1.c:5100: error: unknown field 'isr_hook' specified in initializer
+arch/arm/mach-exynos/mach-u1.c:5100: warning: initialization makes integer from pointer without a cast
+arch/arm/mach-exynos/mach-u1.c: In function 'max17042_need_soc_recal':
+arch/arm/mach-exynos/mach-u1.c:6418: error: 'system_rev' undeclared (first use in this function)
+arch/arm/mach-exynos/mach-u1.c: At top level:
+arch/arm/mach-exynos/mach-u1.c:7231: error: 's3c_device_i2c15' undeclared here (not in a function)
+arch/arm/mach-exynos/mach-u1.c: In function 'smdkc210_machine_init':
+arch/arm/mach-exynos/mach-u1.c:7865: error: 'tuna_i2c15_boardinfo' undeclared (first use in this function)
+arch/arm/mach-exynos/mach-u1.c:7866: error: invalid operands to binary / (have 'struct platform_device **' and 'unsigned int')
+arch/arm/mach-exynos/mach-u1.c:7866: warning: passing argument 2 of 'i2c_register_board_info' from incompatible pointer type
+include/linux/i2c.h:335: note: expected 'const struct i2c_board_info *' but argument is of type 'struct platform_device **'
+arch/arm/mach-exynos/mach-u1.c:7866: warning: passing argument 3 of 'i2c_register_board_info' makes integer from pointer without a cast
+include/linux/i2c.h:335: note: expected 'unsigned int' but argument is of type 'struct platform_device **'
+arch/arm/mach-exynos/mach-u1.c: At top level:
+arch/arm/mach-exynos/mach-u1.c:8120: error: unknown field 'boot_params' specified in initializer
+make[1]: *** [arch/arm/mach-exynos/mach-u1.o] Error 1
 make: *** [arch/arm/mach-exynos] Error 2
-drivers/input/keyboard/cypress/cypress-touchkey.c: At top level:
-drivers/input/keyboard/cypress/cypress-touchkey.c:1091:29: warning: 'bln_suspend_data' defined but not used [-Wunused-variable]
-make[4]: *** [drivers/input/keyboard/cypress/cypress-touchkey.o] Error 1
-make[3]: *** [drivers/input/keyboard/cypress] Error 2
-make[2]: *** [drivers/input/keyboard] Error 2
-make[1]: *** [drivers/input] Error 2
+In file included from drivers/usb/gadget/android.c:48:
+drivers/usb/gadget/u_serial.c:141:1: warning: "pr_vdebug" redefined
+In file included from drivers/usb/gadget/android.c:45:
+drivers/usb/gadget/f_fs.c:40:1: warning: this is the location of the previous definition
+drivers/usb/gadget/android.c:1565: internal compiler error: in dwarf2out_finish, at dwarf2out.c:18906
+Please submit a full bug report,
+with preprocessed source if appropriate.
+See <http://gcc.gnu.org/bugs.html> for instructions.
+make[3]: *** [drivers/usb/gadget/android.o] Error 1
+make[2]: *** [drivers/usb/gadget] Error 2
+make[1]: *** [drivers/usb] Error 2
 make: *** [drivers] Error 2
-
