@@ -27,7 +27,8 @@
 #include <linux/firmware.h>
 #include <mach/cpufreq.h>
 #include <linux/input/mt.h>
-#include <linux/wakelock.h>
+
+#include "../keyboard/cypress/cypress-touchkey.h"
 
 #define OBJECT_TABLE_START_ADDRESS	7
 #define OBJECT_TABLE_ELEMENT_SIZE	6
@@ -82,19 +83,17 @@
 /* TSP state */
 #define TSP_STATE_INACTIVE		-1
 #define TSP_STATE_RELEASE		0
-#define TSP_STATE_PRESS			1
-#define TSP_STATE_MOVE			2
+#define TSP_STATE_PRESS		1
+#define TSP_STATE_MOVE		2
 
 #define ID_BLOCK_SIZE			7
 
 #define DRIVER_FILTER
 #define U1_EUR_TARGET
 
-#define MAX_USING_FINGER_NUM 		10
+#define MAX_USING_FINGER_NUM 10
 
-#define MXT224_AUTOCAL_WAIT_TIME	2000
-/* no debug !!! */
-#define printk(arg, ...)
+#define MXT224_AUTOCAL_WAIT_TIME		2000
 
 #if defined(U1_EUR_TARGET)
 static bool gbfilter;
@@ -410,6 +409,7 @@ static int check_abs_time(void)
 		return 1;
 	else
 		return 0;
+
 }
 
 static int check_abs_time_freq_err(void)
@@ -423,6 +423,7 @@ static int check_abs_time_freq_err(void)
 		return 1;
 	else
 		return 0;
+
 }
 
 static void mxt224_ta_probe(bool ta_status)
@@ -451,7 +452,6 @@ static void mxt224_ta_probe(bool ta_status)
 		calcfg_dis = copy_data->calcfg_charging_e;
 		calcfg_en = copy_data->calcfg_charging_e | 0x20;
 		noise_threshold = copy_data->noisethr_charging;
-		movfilter = copy_data->movfilter_charging;
 		charge_time = copy_data->chrgtime_charging_e;
 #ifdef CLEAR_MEDIAN_FILTER_ERROR
 		copy_data->gErrCondition = ERR_RTN_CONDITION_MAX;
@@ -469,7 +469,6 @@ static void mxt224_ta_probe(bool ta_status)
 
 		calcfg_en = copy_data->calcfg_batt_e | 0x20;
 		noise_threshold = copy_data->noisethr_batt;
-		movfilter = copy_data->movfilter_batt;
 		charge_time = copy_data->chrgtime_batt_e;
 #ifdef CLEAR_MEDIAN_FILTER_ERROR
 		copy_data->gErrCondition = ERR_RTN_CONDITION_IDLE;
@@ -487,25 +486,25 @@ static void mxt224_ta_probe(bool ta_status)
 					    TOUCH_MULTITOUCHSCREEN_T9,
 					    &size_one, &obj_address);
 			size_one = 1;
-			/* blen */
+			/*blen */
 			value = copy_data->blen_batt_e;
 			register_address = 6;
 			write_mem(copy_data,
 				  obj_address + (u16) register_address,
 				  size_one, &value);
-			/* threshold */
+			/*threshold */
 			value = copy_data->threshold_e;
 			register_address = 7;
 			write_mem(copy_data,
 				  obj_address + (u16) register_address,
 				  size_one, &value);
-			/* move Filter */
+			/*move Filter */
 			value = copy_data->movfilter_batt_e;
 			register_address = 13;
 			write_mem(copy_data,
 				  obj_address + (u16) register_address,
 				  size_one, &value);
-			/* nexttchdi */
+			/*nexttchdi*/
 			value = copy_data->nexttchdi_e;
 			register_address = 34;
 			write_mem(copy_data,
@@ -536,7 +535,7 @@ static void mxt224_ta_probe(bool ta_status)
 		size_one = 1;
 		write_mem(copy_data, obj_address + (u16) register_address,
 			  size_one, &value);
-#if !defined(CONFIG_SAMSUNG_PRODUCT_SHIP)
+#if !defined(PRODUCT_SHIP)
 		read_mem(copy_data, obj_address + (u16) register_address,
 			 (u8) size_one, &val);
 		printk(KERN_ERR "[TSP]TA_probe MXT224E T%d Byte%d is %d\n", 48,
@@ -554,7 +553,7 @@ static void mxt224_ta_probe(bool ta_status)
 			value = copy_data->blen_charging_e;
 			write_mem(copy_data, obj_address + 34, size_one,
 				  &value);
-#if !defined(CONFIG_SAMSUNG_PRODUCT_SHIP)
+#if !defined(PRODUCT_SHIP)
 			read_mem(copy_data, obj_address + 34, (u8) size_one,
 				 &val);
 			printk(KERN_DEBUG
@@ -565,7 +564,7 @@ static void mxt224_ta_probe(bool ta_status)
 			value = 40;
 			write_mem(copy_data, obj_address + 35, size_one,
 				  &value);
-#if !defined(CONFIG_SAMSUNG_PRODUCT_SHIP)
+#if !defined(PRODUCT_SHIP)
 			read_mem(copy_data, obj_address + 35, (u8) size_one,
 				 &val);
 			printk(KERN_DEBUG
@@ -594,7 +593,7 @@ static void mxt224_ta_probe(bool ta_status)
 		value = calcfg_en;
 		write_mem(copy_data, obj_address + (u16) register_address,
 			  size_one, &value);
-#if !defined(CONFIG_SAMSUNG_PRODUCT_SHIP)
+#if !defined(PRODUCT_SHIP)
 		read_mem(copy_data, obj_address + (u16) register_address,
 			 (u8) size_one, &val);
 		printk(KERN_ERR "[TSP]TA_probe MXT224E T%d Byte%d is %d\n", 48,
@@ -643,19 +642,12 @@ static void mxt224_ta_probe(bool ta_status)
 		value = (u8) copy_data->threshold;
 		write_mem(copy_data, obj_address + (u16) register_address,
 			  size_one, &value);
-#if !defined(CONFIG_SAMSUNG_PRODUCT_SHIP)
+#if !defined(PRODUCT_SHIP)
 		read_mem(copy_data, obj_address + (u16) register_address,
 			 (u8) size_one, &val);
-		printk(KERN_ERR "[TSP] TA_probe MXT224 T%d Byte%d is %d\n", 9,
+		printk(KERN_ERR "[TSP]TA_probe MXT224 T%d Byte%d is %d\n", 9,
 		       register_address, val);
 #endif
-
-		value = (u8) movfilter;
-		register_address = 13;
-		write_mem(copy_data, obj_address + (u16) register_address,
-			  size_one, &value);
-		read_mem(copy_data, obj_address + (u16) register_address, (u8) size_one, &val);
-		printk(KERN_ERR "[TSP] TA_probe MXT224 T%d Byte%d is %d\n", 9, register_address, val);
 
 		value = noise_threshold;
 		register_address = 8;
@@ -665,8 +657,6 @@ static void mxt224_ta_probe(bool ta_status)
 		size_one = 1;
 		write_mem(copy_data, obj_address + (u16) register_address,
 			  size_one, &value);
-		read_mem(copy_data, obj_address + (u16) register_address, (u8) size_one, &val);
-		printk(KERN_ERR "[TSP] TA_probe MXT224 T%d Byte%d is %d\n", 9, register_address, val);
 	}
 	copy_data->ta_status_pre = (bool) ta_status;
 };
@@ -826,9 +816,9 @@ void check_chip_calibration(unsigned char one_touch_input_flag)
 						    &size,
 						    &object_address);
 
-					/* change calibration suspend settings to zero
-					until calibration confirmed good */
-					/* store normal settings */
+				/* change calibration suspend settings to zero
+				until calibration confirmed good */
+				/* store normal settings */
 					size = 1;
 					copy_data->palm_chk_flag = 2;
 
@@ -1119,7 +1109,7 @@ static int __devinit mxt224_init_touch_driver(struct mxt224_data *data)
 {
 	struct object_t *object_table;
 	u32 read_crc = 0;
-	u32 calc_crc = 0;
+	u32 calc_crc;
 	u16 crc_address;
 	u16 dummy;
 	int i;
@@ -1222,8 +1212,6 @@ static int __devinit mxt224_init_touch_driver(struct mxt224_data *data)
 	return ret;
 }
 
-void (*mxt224_touch_cb)(void) = NULL;
-
 static void report_input_data(struct mxt224_data *data)
 {
 	int i;
@@ -1233,6 +1221,7 @@ static void report_input_data(struct mxt224_data *data)
 	u16 object_address = 0;
 	u16 size = 1;
 	u8 value;
+
 	touch_is_pressed = 0;
 
 	if (level == ~0)
@@ -1248,7 +1237,6 @@ static void report_input_data(struct mxt224_data *data)
 			input_mt_report_slot_state(data->input_dev,
 				MT_TOOL_FINGER, false);
 			data->fingers[i].z = TSP_STATE_INACTIVE;
-
 		/* logging */
 #ifdef __TSP_DEBUG
 			printk(KERN_ERR "[TSP] Up[%d] %4d,%4d\n", i,
@@ -1256,6 +1244,7 @@ static void report_input_data(struct mxt224_data *data)
 #else
 			pr_debug("[TSP] Up[%d]\n", i);
 #endif
+
 			continue;
 		}
 
@@ -1349,10 +1338,11 @@ static void report_input_data(struct mxt224_data *data)
 				level);
 			copy_data->lock_status = 1;
 		}
-		if (touch_is_pressed && mxt224_touch_cb != NULL) {
-			(*mxt224_touch_cb)();
-		}
 	}
+
+    /* tell cypress keypad we had finger activity */
+    touchscreen_state_report(touch_is_pressed);
+
 }
 
 void palm_recovery(void)
@@ -1387,9 +1377,8 @@ void palm_recovery(void)
 			atchcalst_tmp = 0;
 			atchcalsthr_tmp = 0;
 
-			/* TCHAUTOCAL */
 			ret = write_mem(copy_data, obj_address + 4, 1,
-				&atchcalst_tmp);
+				&atchcalst_tmp);	/* TCHAUTOCAL */
 
 			ret =
 			    write_mem(copy_data, obj_address + 6, 1,
@@ -1398,16 +1387,13 @@ void palm_recovery(void)
 			    write_mem(copy_data, obj_address + 7, 1,
 				      &atchcalsthr_tmp);
 
-			/* mxT224E */
-			if (copy_data->family_id == 0x81) {
-				/* forced cal thr */
+			if (copy_data->family_id == 0x81) {	/* mxT224E */
 				ret = write_mem(copy_data,
 				obj_address + 8, 1,
-				&atchcalst_tmp);
-				/* forced cal ratio */
+				&atchcalst_tmp);	/* forced cal thr  */
 				ret1 = write_mem(copy_data,
 				obj_address + 9, 1,
-				&atchcalsthr_tmp);
+				&atchcalsthr_tmp);	/* forced cal ratio */
 			}
 		}
 	}
@@ -1503,8 +1489,8 @@ static int Check_Err_Condition(void)
 	switch (copy_data->gErrCondition) {
 	case ERR_RTN_CONDITION_IDLE:
 	default:
-		rtn = ERR_RTN_CONDITION_T9;
-		break;
+			rtn = ERR_RTN_CONDITION_T9;
+			break;
 	}
 	return rtn;
 }
@@ -1582,7 +1568,7 @@ static void median_err_setting(void)
 				    get_object_info(copy_data,
 						    SPT_CTECONFIG_T46,
 						    &size_one, &obj_address);
-				value = 48;  /* 32; */
+				value = 48;  /* 32;*/
 				write_mem(copy_data, obj_address + 3, 1,
 					  &value);
 				ret |=
@@ -1618,7 +1604,7 @@ static void median_err_setting(void)
 				value = 40;
 				write_mem(copy_data, obj_address + 35, 1,
 					  &value);
-				value = 81; /* 80; */
+				value = 81; /*80;*/
 				write_mem(copy_data, obj_address + 39, 1,
 					  &value);
 #endif
@@ -1669,8 +1655,8 @@ static void median_err_setting(void)
 			copy_data->noise_median.t46_actvsyncsperx_for_mferr;
 				write_mem(copy_data, obj_address + 3, 1,
 					  &value);
-			} else if (state >= 2) {
-				value = 10;
+	} else if (state >= 2) {
+		value = 10;
 				write_mem(copy_data, obj_address + 3, 1,
 					  &value);
 				value = 0;	/* secondmf */
@@ -1726,18 +1712,15 @@ static irqreturn_t mxt224_irq_thread(int irq, void *ptr)
 			return IRQ_HANDLED;
 
 		if ((msg[0] == 0x1) &&
-			((msg[1] & 0x10) == 0x10)) {
-			/* caliration */
-			printk(KERN_ERR "[TSP] Calibration!!!!!!\n");
+			((msg[1] & 0x10) == 0x10)) {	/* caliration */
+			printk(KERN_ERR "[TSP] Calibration!!!!!!");
 			Doing_calibration_flag = 1;
 		} else if ((msg[0] == 0x1) &&
-			((msg[1] & 0x40) == 0x40)) {
-			/* overflow */
+			((msg[1] & 0x40) == 0x40)) { /* overflow */
 			printk(KERN_ERR "[TSP] Overflow!!!!!!");
 		} else if ((msg[0] == 0x1) &&
-			((msg[1] & 0x10) == 0x00)) {
-			/* caliration */
-			printk(KERN_ERR "[TSP] Calibration End!!!!!!\n");
+			((msg[1] & 0x10) == 0x00)) {	/* caliration */
+			printk(KERN_ERR "[TSP] Calibration End!!!!!!");
 
 			Doing_calibration_flag = 0;
 			if (cal_check_flag == 1) {
@@ -1754,12 +1737,10 @@ static irqreturn_t mxt224_irq_thread(int irq, void *ptr)
 		}
 
 		if ((msg[0] == 14) && (copy_data->family_id == 0x80)) {
-			if ((msg[1] & 0x01) == 0x00) {
-				/* Palm release */
+			if ((msg[1] & 0x01) == 0x00) {/* Palm release */
 				printk(KERN_ERR "[TSP] Palm release");
 				touch_is_pressed = 0;
-			} else if ((msg[1] & 0x01) == 0x01) {
-				/* Palm Press */
+			} else if ((msg[1] & 0x01) == 0x01) {/* Palm Press */
 				printk(KERN_ERR "[TSP] Palm Press");
 				touch_is_pressed = 1;
 				touch_message_flag = 1;
@@ -1789,7 +1770,6 @@ static irqreturn_t mxt224_irq_thread(int irq, void *ptr)
 				}
 			}
 		}
-#if 0
 #ifdef CLEAR_MEDIAN_FILTER_ERROR
 		if ((msg[0] == 18) && (data->family_id == 0x81)) {
 			if ((msg[4] & 0x5) == 0x5) {
@@ -1819,7 +1799,6 @@ static irqreturn_t mxt224_irq_thread(int irq, void *ptr)
 			}
 		}
 #endif
-#endif
 		if (msg[0] > 1 && msg[0] < 12) {
 
 			if ((copy_data->touch_is_pressed_arr[msg[0] - 2] == 1)
@@ -1827,20 +1806,16 @@ static irqreturn_t mxt224_irq_thread(int irq, void *ptr)
 				printk(KERN_ERR
 				       "[TSP] Calibrate on Ghost touch");
 				calibrate_chip();
-				copy_data->touch_is_pressed_arr[msg[0] - 2] = 0;
+			copy_data->touch_is_pressed_arr[msg[0] - 2] = 0;
 			}
 
-			if ((msg[1] & 0x20) == 0x20) {
-				/* Release */
-			/* 
-				touch_is_pressed = 0; 
-				copy_data->touch_is_pressed_arr[msg[0]-2] = 0;
-			*/
-			} else if ((msg[1] & 0x90) == 0x90) {
-				/* Detect & Move */
+			if ((msg[1] & 0x20) == 0x20) {	/* Release */
+			/* touch_is_pressed = 0; */
+			/* copy_data->touch_is_pressed_arr[msg[0]-2] = 0; */
+
+			} else if ((msg[1] & 0x90) == 0x90) {/*Detect & Move*/
 				touch_message_flag = 1;
-			} else if ((msg[1] & 0xC0) == 0xC0) {
-				/* Detect & Press */
+			} else if ((msg[1] & 0xC0) == 0xC0) {/*Detect & Press*/
 				touch_message_flag = 1;
 			}
 
@@ -1850,7 +1825,7 @@ static irqreturn_t mxt224_irq_thread(int irq, void *ptr)
 				data->fingers[id].z = TSP_STATE_RELEASE;
 				data->fingers[id].w = msg[5];
 				data->finger_mask |= 1U << id;
-				copy_data->touch_is_pressed_arr[msg[0] - 2] = 0;
+			copy_data->touch_is_pressed_arr[msg[0] - 2] = 0;
 				copy_data->touch_state = 1;
 			} else if ((msg[1] & DETECT_MSG_MASK)
 				   && (msg[1] &
@@ -2008,8 +1983,7 @@ static void mxt224_early_suspend(struct early_suspend *h)
 	copy_data->freq_table.fherr_cnt = 0;
 	copy_data->freq_table.fherr_num = 1;
 
-		disable_irq(data->client->irq);
-
+	disable_irq(data->client->irq);
 	mxt224_internal_suspend(data);
 }
 
@@ -2020,8 +1994,9 @@ static void mxt224_late_resume(struct early_suspend *h)
 	bool ta_status = 0;
 
 	mxt224_internal_resume(data);
-		enable_irq(data->client->irq);
+	enable_irq(data->client->irq);
 
+	copy_data->mxt224_enabled = 1;
 #ifdef CONFIG_TARGET_LOCALE_KOR
 	copy_data->is_inputmethod = 0;
 #endif
@@ -2122,6 +2097,7 @@ static ssize_t qt602240_object_setting(struct device *dev,
 	       object_register, val);
 
 	return count;
+
 }
 
 static ssize_t qt602240_object_show(struct device *dev,
@@ -2286,6 +2262,7 @@ int read_all_data(uint16_t dbg_mode)
 	ret =
 	    get_object_info(copy_data, DEBUG_DIAGNOSTIC_T37, &size,
 			    &object_address);
+/*jerry no need to leave it */
 #if 0
 	for (i = 0; i < 5; i++) {
 		if (data_buffer[0] == dbg_mode)
@@ -2331,7 +2308,6 @@ int read_all_data(uint16_t dbg_mode)
 			if (data_buffer[0] != 0) {
 				if (qt_refrence_node[num] > max_value)
 					max_value = qt_refrence_node[num];
-
 				if (qt_refrence_node[num] < min_value)
 					min_value = qt_refrence_node[num];
 			}
@@ -2377,6 +2353,7 @@ int read_all_delta_data(uint16_t dbg_mode)
 	ret =
 	    get_object_info(copy_data, DEBUG_DIAGNOSTIC_T37, &size,
 			    &object_address);
+/*jerry no need to leave it */
 #if 0
 	for (i = 0; i < 5; i++) {
 		if (data_buffer[0] == dbg_mode)
@@ -2438,6 +2415,7 @@ static void mxt224_optical_gain(uint16_t dbg_mode)
 	ret =
 	    get_object_info(copy_data, DEBUG_DIAGNOSTIC_T37, &size,
 			    &object_address);
+/*jerry no need of it*/
 #if 0
 	for (i = 0; i < 5; i++) {
 		if (data_buffer[0] == dbg_mode)
@@ -2476,7 +2454,6 @@ static void mxt224_optical_gain(uint16_t dbg_mode)
 #else
 			if (copy_data->family_id == 0x81)
 				qt_refrence = qt_refrence - 16384;
-
 			if (qt_refrence > 14500)
 				reference_over = 1;
 #endif
@@ -2631,7 +2608,7 @@ static int mxt224_load_fw(struct device *dev, const char *fn)
 			((*(fw->data + pos) << 8) | *(fw->data + pos + 1));
 
 		/* We should add 2 at frame size
-		 * as the the firmware data is not
+		as the the firmware data is not
 		 * included the CRC bytes.
 		 */
 		frame_size += 2;
@@ -2801,10 +2778,8 @@ static int atoi(const char *str)
 {
 	int result = 0;
 	int count = 0;
-
 	if (str == NULL)
 		return -1;
-
 	while (str[count] != '\0' && str[count] >= '0' && str[count] <= '9') {
 		result = result * 10 + str[count] - '0';
 		++count;
@@ -2816,11 +2791,9 @@ ssize_t disp_all_refdata_show(struct device *dev,
 			      struct device_attribute *attr, char *buf)
 {
 
-/*	
-	int status = 0;
+/*	int status = 0;
 	char tempStr[5*209 + 1] = { 0 };
-	nt i = 0;
-*/
+	nt i = 0;*/
 	return sprintf(buf, "%u\n", qt_refrence_node[index_reference]);
 }
 
@@ -2828,6 +2801,7 @@ ssize_t disp_all_refdata_store(struct device *dev,
 			       struct device_attribute *attr, const char *buf,
 			       size_t size)
 {
+
 	index_reference = atoi(buf);
 	return size;
 }
@@ -2860,6 +2834,7 @@ ssize_t disp_all_deltadata_store(struct device *dev,
 				 struct device_attribute *attr,
 				 const char *buf, size_t size)
 {
+
 	index_delta = atoi(buf);
 	return size;
 }
@@ -2867,7 +2842,9 @@ ssize_t disp_all_deltadata_store(struct device *dev,
 static ssize_t set_firm_version_show(struct device *dev,
 				     struct device_attribute *attr, char *buf)
 {
+
 	return sprintf(buf, "%#02x\n", copy_data->tsp_version_disp);
+
 }
 
 static ssize_t set_module_off_show(struct device *dev,
@@ -2937,7 +2914,6 @@ static ssize_t set_mxt_update_show(struct device *dev,
 		copy_data->firm_status_data = 3;
 		printk(KERN_ERR
 			"[TSP The firmware update failed(%d)\n", error);
-		enable_irq(data->client->irq);
 		return error;
 	} else {
 		dev_dbg(dev, "The firmware update succeeded\n");
@@ -3039,90 +3015,6 @@ static ssize_t tsp_threshold_store(struct device *dev,
 	return size;
 }
 
-static ssize_t touch_config_show(struct device *dev,
-				  struct device_attribute *attr, char *buf)
-{
-	return sprintf(buf, "[Battery]  touchthresh: %u noisethresh: %u movfilter: %u\n"
-			    "[Charging] touchthresh: %u noisethresh: %u movfilter: %u\n"
-			    "[Battery-E] touchthresh_e: %u movfilter_e: %u\n"
-			    "[Charging-E] touchthresh_e: %u movfilter_e: %u\n",
-					copy_data->tchthr_batt,
-					copy_data->noisethr_batt,
-					copy_data->movfilter_batt,
-					copy_data->tchthr_charging,
-					copy_data->noisethr_charging,
-					copy_data->movfilter_charging,
-					copy_data->tchthr_batt_e,
-					copy_data->movfilter_batt_e,
-					copy_data->tchthr_charging_e,
-					copy_data->movfilter_charging_e);
-}
-
-static ssize_t touch_config_store(struct device *dev,
-				   struct device_attribute *attr,
-				   const char *buf, size_t size)
-{
-	int ret = 0;
-	unsigned int value[10];
-	bool ta_status = 0;
-
-	ret = sscanf(buf, "%d %d %d %d %d %d %d %d %d %d\n",
-		&value[0], &value[1], &value[2],
-			&value[3], &value[4], &value[5],
-			&value[6], &value[7], &value[8], &value[9]);
-
-	if (ret != 10) {
-		return -EINVAL;
-	} else {
-		copy_data->tchthr_batt = (u8) value[0];
-		copy_data->noisethr_batt = (u8) value[1];
-		copy_data->movfilter_batt = (u8) value[2];
-		copy_data->tchthr_charging = (u8) value[3];
-		copy_data->noisethr_charging = (u8) value[4];
-		copy_data->movfilter_charging = (u8) value[5];
-		copy_data->tchthr_batt_e = (u8) value[6];
-		copy_data->movfilter_batt_e = (u8) value[7];
-		copy_data->tchthr_charging_e = (u8) value[8];
-		copy_data->movfilter_charging_e = (u8) value[9];
-	}
-
-	if (copy_data->read_ta_status) {
-		copy_data->read_ta_status(&ta_status);
-		mxt224_ta_probe(ta_status);
-	}
-
-	return size;
-}
-
-void tsp_touch_config_update(int status)
-{
-	u8 touch_threshold;
-	u8 mov_filter;
-	u8 noise_threshold;
-	u8 touch_threshold_e;
-	u8 mov_filter_e;
-	bool ta_status = 0;
-
-	if (status > 0) {
-		touch_threshold = copy_data->tchthr_charging;
-		noise_threshold = copy_data->noisethr_charging;
-		mov_filter = copy_data->movfilter_charging;
-		touch_threshold_e = copy_data->tchthr_charging_e;
-		mov_filter_e = copy_data->movfilter_charging_e;
-	} else {
-		touch_threshold = copy_data->tchthr_batt;
-		noise_threshold = copy_data->noisethr_batt;
-		mov_filter = copy_data->movfilter_batt;
-		touch_threshold_e = copy_data->tchthr_batt_e;
-		mov_filter_e = copy_data->movfilter_batt_e;
-	}
-
-	if (copy_data->read_ta_status) {
-		copy_data->read_ta_status(&ta_status);
-		mxt224_ta_probe(ta_status);
-	}
-}
-
 static ssize_t set_mxt_firm_version_show(struct device *dev,
 					 struct device_attribute *attr,
 					 char *buf)
@@ -3153,7 +3045,6 @@ ssize_t set_tsp_for_inputmethod_show(struct device *dev,
 {
 	printk(KERN_ERR "[TSP] %s is called.. is_inputmethod=%d\n", __func__,
 	       copy_data->is_inputmethod);
-
 	if (copy_data->is_inputmethod)
 		*buf = '1';
 	else
@@ -3303,13 +3194,13 @@ static DEVICE_ATTR(set_module_on, S_IRUGO | S_IWUSR | S_IWGRP,
 	20110222 N1 firmware sync
 */
 static DEVICE_ATTR(tsp_firm_update, S_IRUGO | S_IWUSR | S_IWGRP,
-		   set_mxt_update_show, NULL);/* firmware update */
+	set_mxt_update_show, NULL);/* firmware update */
 static DEVICE_ATTR(tsp_firm_update_status, S_IRUGO | S_IWUSR | S_IWGRP,
-		   set_mxt_firm_status_show, NULL);/* firmware update status return */
+	set_mxt_firm_status_show, NULL);/* firmware update status return */
 static DEVICE_ATTR(tsp_threshold, S_IRUGO | S_IWUSR | S_IWGRP,
-	 	   tsp_threshold_show, tsp_threshold_store);/* threshold return, store */
+	tsp_threshold_show, tsp_threshold_store);/* threshold return, store */
 static DEVICE_ATTR(tsp_firm_version_phone, S_IRUGO | S_IWUSR | S_IWGRP,
-		   set_mxt_firm_version_show, NULL);	/* PHONE */
+	set_mxt_firm_version_show, NULL);	/* PHONE */
 static DEVICE_ATTR(tsp_firm_version_panel, S_IRUGO | S_IWUSR | S_IWGRP,
 		   set_mxt_firm_version_read_show, NULL);/*PART*/
 static DEVICE_ATTR(tsp_config_version, S_IRUGO | S_IWUSR | S_IWGRP,
@@ -3318,7 +3209,7 @@ static DEVICE_ATTR(tsp_config_version, S_IRUGO | S_IWUSR | S_IWGRP,
 #ifdef CONFIG_TARGET_LOCALE_KOR
 /* For 3x4 Input Method, Jump limit changed API */
 static DEVICE_ATTR(set_tsp_for_inputmethod, S_IRUGO | S_IWUSR | S_IWGRP,
-		   set_tsp_for_inputmethod_show, set_tsp_for_inputmethod_store);
+	set_tsp_for_inputmethod_show, set_tsp_for_inputmethod_store);
 #endif
 static DEVICE_ATTR(tsp_touchtype, S_IRUGO | S_IWUSR | S_IWGRP,
 		   tsp_touchtype_show, NULL);
@@ -3330,8 +3221,6 @@ static DEVICE_ATTR(object_write, S_IRUGO | S_IWUSR | S_IWGRP, NULL,
 		   qt602240_object_setting);
 static DEVICE_ATTR(dbg_switch, S_IRUGO | S_IWUSR | S_IWGRP, NULL,
 		   mxt224_debug_setting);
-static DEVICE_ATTR(tsp_touch_config, S_IRUGO | S_IWUSR | S_IWGRP,
-		   touch_config_show, touch_config_store);
 
 static int sec_touchscreen_enable(struct mxt224_data *data)
 {
@@ -3713,10 +3602,6 @@ static int __devinit mxt224_probe(struct i2c_client *client,
 		printk(KERN_ERR "Failed to create device file(%s)!\n",
 		       dev_attr_tsp_threshold.attr.name);
 
-	if (device_create_file(sec_touchscreen, &dev_attr_tsp_touch_config) < 0)
-		printk(KERN_ERR "Failed to create device file(%s)!\n",
-		       dev_attr_tsp_touch_config.attr.name);
-
 	if (device_create_file
 	    (sec_touchscreen, &dev_attr_tsp_firm_version_phone) < 0)
 		printk(KERN_ERR "Failed to create device file(%s)!\n",
@@ -3900,7 +3785,7 @@ static struct i2c_driver mxt224_i2c_driver = {
 		   .owner = THIS_MODULE,
 		   .name = MXT224_DEV_NAME,
 		   .pm = &mxt224_pm_ops,
-	},
+		   },
 };
 
 static int __init mxt224_init(void)

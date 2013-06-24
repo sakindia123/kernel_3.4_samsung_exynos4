@@ -125,6 +125,7 @@ obj-y				+= ieee802154/
 obj-y				+= clk/
 
 obj-$(CONFIG_HWSPINLOCK)	+= hwspinlock/
+obj-$(CONFIG_VIBETONZ)		+= motor/
 obj-$(CONFIG_SENSORS_CORE)	+= sensor/
 obj-$(CONFIG_SENSORS_SSP)	+= sensorhub/
 obj-$(CONFIG_FM_RADIO)   += samsung/

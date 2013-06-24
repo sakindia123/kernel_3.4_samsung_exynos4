@@ -19,11 +19,11 @@ nod /dev/block/mmcblk1p1 600 0 0 b 179 17
 slink /init /stage1/init 777 0 0
 dir /proc 755 0 0
 dir /stage1 755 0 0
-file /stage1/busybox /home/sarthak/android_kernel_samsung_smdk4412/usr/galaxys2_initramfs_files/busybox 755 0 0
-file /stage1/init /home/sarthak/android_kernel_samsung_smdk4412/usr/galaxys2_initramfs_files/init 755 0 0
+file /stage1/busybox /home/sarthak/revoer/kernel_3.4_samsung_exynos4/usr/galaxys2_initramfs_files/busybox 755 0 0
+file /stage1/init /home/sarthak/revoer/kernel_3.4_samsung_exynos4/usr/galaxys2_initramfs_files/init 755 0 0
 dir /sys 755 0 0
 dir /mnt 755 0 0
 dir /mnt/.lfs 755 0 0
-file /stage1/boot.cpio /home/sarthak/android_kernel_samsung_smdk4412/usr/ramdisk.cpio 644 0 0
-file /stage1/recovery.cpio /home/sarthak/android_kernel_samsung_smdk4412/usr/ramdisk-recovery.cpio 644 0 0
+file /stage1/boot.cpio /home/sarthak/revoer/kernel_3.4_samsung_exynos4/usr/ramdisk.cpio 644 0 0
+file /stage1/recovery.cpio /home/sarthak/revoer/kernel_3.4_samsung_exynos4/usr/ramdisk-recovery.cpio 644 0 0
 

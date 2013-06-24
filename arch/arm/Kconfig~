@@ -5,6 +5,7 @@ config ARM
 	select HAVE_DMA_API_DEBUG
 	select HAVE_IDE if PCI || ISA || PCMCIA
 	select HAVE_MEMBLOCK
+        select HAVE_DMA_CONTIGUOUS if (CPU_V6 || CPU_V6K || CPU_V7)
 	select RTC_LIB
 	select SYS_SUPPORTS_APM_EMULATION
 	select GENERIC_ATOMIC64 if (CPU_V6 || !CPU_32v6K || !AEABI)
@@ -115,7 +116,6 @@ config STACKTRACE_SUPPORT
 
 config HAVE_LATENCYTOP_SUPPORT
 	bool
-	depends on !SMP
 	default y
 
 config LOCKDEP_SUPPORT
@@ -244,6 +244,9 @@ config PHYS_OFFSET
 config GENERIC_BUG
 	def_bool y
 	depends on BUG
+
+config ARCH_HIBERNATION_POSSIBLE
+	def_bool y
 
 source "init/Kconfig"
 
@@ -425,6 +428,22 @@ config ARCH_EBSA110
 	  from Digital. It has limited hardware on-board, including an
 	  Ethernet interface, two PCMCIA sockets, two serial ports and a
 	  parallel port.
+
+config ARCH_S3C2410
+	bool "Samsung S3C2410, S3C2412, S3C2413, S3C2416, S3C2440, S3C2442, S3C2443, S3C2450"
+	select GENERIC_GPIO
+	select ARCH_HAS_CPUFREQ
+	select HAVE_CLK
+	select ARCH_USES_GETTIMEOFFSET
+	select HAVE_S3C2410_I2C if I2C
+	help
+	  Samsung S3C2410X CPU based systems, such as the Simtec Electronics
+	  BAST (<http://www.simtec.co.uk/products/EB110ITX/>), the IPAQ 1940 or
+	  the Samsung SMDK2410 development board (and derivatives).
+
+	  Note, the S3C2416 and the S3C2450 are so close that they even share
+	  the same SoC ID code. This means that there is no separate machine
+	  directory (no arch/arm/mach-s3c2450) as the S3C2416 was first.
 
 config ARCH_EP93XX
 	bool "EP93xx-based"
@@ -881,8 +900,8 @@ config ARCH_S5PV210
 config ARCH_EXYNOS
 	bool "Samsung EXYNOS"
 	select CPU_V7
-	select ARCH_FLATMEM_ENABLE
 	select GENERIC_GPIO
+        select ARCH_FLATMEM_ENABLE
 	select HAVE_CLK
 	select CLKDEV_LOOKUP
 	select ARCH_HAS_CPUFREQ
@@ -1128,6 +1147,15 @@ source "arch/arm/mach-vt8500/Kconfig"
 
 source "arch/arm/mach-w90x900/Kconfig"
 
+if ARCH_S3C2410
+source "arch/arm/mach-s3c2400/Kconfig"
+source "arch/arm/mach-s3c2410/Kconfig"
+source "arch/arm/mach-s3c2412/Kconfig"
+source "arch/arm/mach-s3c2416/Kconfig"
+source "arch/arm/mach-s3c2440/Kconfig"
+source "arch/arm/mach-s3c2443/Kconfig"
+endif
+
 # Definitions to make life easier
 config ARCH_ACORN
 	bool
@@ -1154,9 +1182,14 @@ config ARM_TIMER_SP804
 
 source arch/arm/mm/Kconfig
 
+config ARM_PLD_SIZE
+	int
+	default 64 if ARCH_EXYNOS5
+	default 32
+
 config ARM_NR_BANKS
 	int
-	default 16 if ARCH_EP93XX
+	default 16 if ARCH_EP93XX || ARCH_EXYNOS
 	default 8
 
 config IWMMXT
@@ -1297,6 +1330,16 @@ config ARM_ERRATA_720789
 	  tables. The workaround changes the TLB flushing routines to invalidate
 	  entries regardless of the ASID.
 
+config ARM_ERRATA_720791
+	bool "ARM errata: Dynamic high-level clock gating corrupts the Jazelle instruction stream"
+	depends on CPU_V7
+	help
+	  This option enables the workaround for the 720791 Cortex-A9
+	  (r1p0..r1p2) erratum.  The Jazelle instruction stream may be
+	  corrupted when dynamic high-level clock gating is enabled.
+	  This workaround disables gating the Core clock when the Instruction
+	  side is waiting for a Page Table Walk answer or linefill completion.
+
 config PL310_ERRATA_727915
 	bool "PL310 errata: Background Clean & Invalidate by Way operation can cause data corruption"
 	depends on CACHE_L2X0
@@ -1367,6 +1410,30 @@ config ARM_ERRATA_754327
 	  continuously polls a memory location waiting to observe an update.
 	  This workaround defines cpu_relax() as smp_mb(), preventing correctly
 	  written polling loops from denying visibility of updates to memory.
+
++\config ARM_ERRATA_761320
+	bool "ARM errata: no direct eviction"
+	depends on CPU_V7 && SMP
+	help
+	  This option enables the workaround for the 761320 Cortex-A9 erratum.
+
+config ARM_ERRATA_761171
+	bool "ARM errata: disable store streaming of mode 3"
+	depends on CPU_V7 && SMP
+	help
+	  This option enables the workaround for the 761171 Cortex-A15 erratum.
+
+config ARM_ERRATA_762974
+	bool "ARM errata: disable l2 prefetch"
+	depends on CPU_V7 && SMP
+	help
+	  This option enables the workaround for the 762964 Cortex-A15 erratum.
+
+config ARM_ERRATA_763722
+	bool "ARM errata: disable store streaming of mode 2 and mode 3"
+	depends on CPU_V7 && SMP
+	help
+	  This option enables the workaround for the 763722 Cortex-A15 erratum.
 
 config ARM_ERRATA_364296
 	bool "ARM errata: Possible cache data corruption with hit-under-miss enabled"
@@ -1768,6 +1835,7 @@ config FORCE_MAX_ZONEORDER
 	int "Maximum zone order" if ARCH_SHMOBILE
 	range 11 64 if ARCH_SHMOBILE
 	default "9" if SA1111
+        default "12" if ARCH_EXYNOS
 	default "11"
 	help
 	  The kernel memory allocator divides physically contiguous memory
