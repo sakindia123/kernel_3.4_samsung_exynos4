@@ -24,6 +24,7 @@
 #include <linux/fs.h>
 #include <linux/sensor/ak8975.h>
 #include <linux/completion.h>
+#include <linux/module.h>
 #include "ak8975-reg.h"
 #include <linux/sensor/sensors_core.h>
 

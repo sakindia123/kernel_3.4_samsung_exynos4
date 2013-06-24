@@ -11,6 +11,7 @@
 #include <linux/serial_core.h>
 #include <linux/delay.h>
 #include <linux/gpio.h>
+#include <linux/module.h>
 #include <linux/gpio_keys.h>
 #include <linux/gpio_event.h>
 #include <linux/lcd.h>

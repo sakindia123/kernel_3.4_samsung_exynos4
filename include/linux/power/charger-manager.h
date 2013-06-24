@@ -12,10 +12,11 @@
  * published by the Free Software Foundation.
 **/
 
-#ifndef _CHARGER_MANAGER_H
-#define _CHARGER_MANAGER_H
+#ifndef __SAMSUNG_DEV_CHARGER_H
+#define __SAMSUNG_DEV_CHARGER_H
 
 #include <linux/power_supply.h>
+#include <linux/extcon.h>
 
 enum data_source {
 	CM_FUEL_GAUGE,

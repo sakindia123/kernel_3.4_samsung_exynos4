@@ -723,7 +723,6 @@ deps_config := \
 	arch/arm/mm/Kconfig \
 	arch/arm/mach-s3c2443/Kconfig \
 	arch/arm/mach-s3c2416/Kconfig \
-	arch/arm/mach-s3c2410/Kconfig \
 	arch/arm/mach-s3c2400/Kconfig \
 	arch/arm/mach-w90x900/Kconfig \
 	arch/arm/mach-vt8500/Kconfig \
@@ -744,7 +743,7 @@ deps_config := \
 	arch/arm/mach-s3c64xx/Kconfig \
 	arch/arm/mach-s3c2440/Kconfig \
 	arch/arm/mach-s3c2412/Kconfig \
-	arch/arm/mach-s3c24xx/Kconfig \
+	arch/arm/mach-s3c2410/Kconfig \
 	arch/arm/mach-spear6xx/Kconfig \
 	arch/arm/mach-spear3xx/Kconfig \
 	arch/arm/plat-spear/Kconfig \
