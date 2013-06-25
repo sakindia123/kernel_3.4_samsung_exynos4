@@ -18,6 +18,9 @@ drivers/power/sec_battery_u1.c:2647: error: for each function it appears in.)
 arch/arm/mach-exynos/board-u1-modems.c: In function 'set_slave_wake':drivers/power/sec_battery_u1.c: In function 'sec_bat_probe':arch/arm/mach-exynos/tmu.c:381: warning: 'dev_attr_print_state' defined but not used
 drivers/power/sec_battery_u1.c:3129: error: 'system_rev' undeclared (first use in this function)
 
+rivers/mmc/host/mshci.c: In function 'mshci_set_ios':
+drivers/mmc/host/mshci.c:1236: error: 'struct mmc_ios' has no member named 'ddr'
+drivers/mmc/host/mshci.c:1244: error: 'struct mmc_ios' has no member named 'ddr'
 
 arch/arm/mach-exynos/board-u1-modems.c:245: warning: unused variable 'spin'
 make[2]: *** [drivers/power/sec_battery_u1.o] Error 1
