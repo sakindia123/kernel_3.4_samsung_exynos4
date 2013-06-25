@@ -30,6 +30,7 @@
 #include <mach/regs-audss.h>
 #include <mach/asv.h>
 #include <mach/regs-usb-phy.h>
+#include <mach/memory.h>
 
 #include <plat/regs-otg.h>
 #include <plat/exynos4.h>

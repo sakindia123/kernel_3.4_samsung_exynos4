@@ -32,6 +32,8 @@
 #include <plat/pm.h>
 #include <mach/pm-core.h>
 
+#define PLAT_PHYS_OFFSET		UL(0x40000000)
+
 /* for external use */
 unsigned long s3c_suspend_wakeup_stat;
 
