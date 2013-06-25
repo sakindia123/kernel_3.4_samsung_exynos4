@@ -30,7 +30,7 @@
 #include <linux/mutex.h>
 #include <linux/delay.h>
 #include <linux/platform_device.h>
-#include <linux/regulator/driver.h>
+#include "max8997-driver.h"
 #include <linux/mfd/max8997.h>
 #include <linux/mfd/max8997-private.h>
 

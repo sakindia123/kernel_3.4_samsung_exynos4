@@ -6,7 +6,19 @@ arch/arm/mach-exynos/pm-exynos4.c: In function 'exynos4_pm_drvinit':
 arch/arm/mach-exynos/pm-exynos4.c:439: warning: implicit declaration of function 'sysdev_driver_register'
 make[1]: *** [arch/arm/mach-exynos/pm-exynos4.o] Error 1
 make[1]: *** Waiting for unfinished jobs....
-arch/arm/mach-exynos/stand-hotplug.c:105: error: expected ')' before 'uint'
+drivers/mmc/host/sdhci-s3c.c: In function 'sdhci_s3c_gpio_card_detect_thread':
+drivers/mmc/host/sdhci-s3c.c:410: warning: implicit declaration of function 'mmc_host_sd_set_present'
+drivers/mmc/host/sdhci-s3c.c:412: warning: implicit declaration of function 'mmc_host_sd_clear_present'
+drivers/mmc/host/sdhci-s3c.c:414: warning: implicit declaration of function 'mmc_host_sd_present'
+drivers/mmc/host/sdhci-s3c.c: In function 'sdhci_s3c_suspend':
+drivers/mmc/host/sdhci-s3c.c:781: error: too many arguments to function 'sdhci_suspend_host'
+drivers/mmc/host/sdhci-s3c.c: In function 'sdhci_s3c_shutdown':
+drivers/mmc/host/sdhci-s3c.c:790: warning: implicit declaration of function 'sdhci_shutdown_host'
+make[3]: *** [drivers/mmc/host/sdhci-s3c.o] Error 1
+make[2]: *** [drivers/mmc/host] Error 2
+make[1]: *** [drivers/mmc] Error 2
+make[1]: *** Waiting for unfinished jobs....
+
 arch/arm/mach-exynos/stand-hotplug.c:107: error: expected ')' before 'uint'
 arch/arm/mach-exynos/stand-hotplug.c:109: error: expected ')' before 'uint'
 arch/arm/mach-exynos/stand-hotplug.c:111: error: expected ')' before 'uint'
@@ -23,37 +35,18 @@ arch/arm/mach-exynos/stand-hotplug.c: In function 'hotplug_timer':
 arch/arm/mach-exynos/stand-hotplug.c:248: warning: implicit declaration of function 'cputime64_sub'
 arch/arm/mach-exynos/stand-hotplug.c:268: warning: implicit declaration of function 'get_cpu_nr_running'
 make[1]: *** [arch/arm/mach-exynos/stand-hotplug.o] Error 1
-drivers/mmc/host/sdhci-s3c.c: In function 'sdhci_s3c_gpio_card_detect_thread':
-drivers/mmc/host/sdhci-s3c.c:410: warning: implicit declaration of function 'mmc_host_sd_set_present'
-drivers/mmc/host/sdhci-s3c.c:412: warning: implicit declaration of function 'mmc_host_sd_clear_present'
-drivers/mmc/host/sdhci-s3c.c:414: warning: implicit declaration of function 'mmc_host_sd_present'
-drivers/mmc/host/sdhci-s3c.c: In function 'sdhci_s3c_suspend':
-drivers/mmc/host/sdhci-s3c.c:781: error: too many arguments to function 'sdhci_suspend_host'
-drivers/mmc/host/sdhci-s3c.c: In function 'sdhci_s3c_shutdown':
-drivers/mmc/host/sdhci-s3c.c:790: warning: implicit declaration of function 'sdhci_shutdown_host'
-make[3]: *** [drivers/mmc/host/sdhci-s3c.o] Error 1
-make[3]: *** Waiting for unfinished jobs....
-drivers/regulator/max8997.c: In function 'max8997_pmic_probe':
-drivers/regulator/max8997.c:1366: error: too few arguments to function 'regulator_register'
-make[2]: *** [drivers/regulator/max8997.o] Error 1
-make[1]: *** [drivers/regulator] Error 2
-make[1]: *** Waiting for unfinished jobs....
+arch/arm/mach-exynos/sec-switch_max8997.c:51: warning: 'switch_dock' defined but not used
 arch/arm/mach-exynos/mach-u1.c:3782: error: 'max8997_muic_usb_cb' undeclared here (not in a function)
-arch/arm/mach-exynos/mach-u1.c:5083: error: unknown field 'isr_hook' specified in initializer
-arch/arm/mach-exynos/mach-u1.c:5083: warning: initialization makes integer from pointer without a cast
-arch/arm/mach-exynos/mach-u1.c:5092: error: unknown field 'isr_hook' specified in initializer
-arch/arm/mach-exynos/mach-u1.c:5092: warning: initialization makes integer from pointer without a cast
-arch/arm/mach-exynos/mach-u1.c:5101: error: unknown field 'isr_hook' specified in initializer
-arch/arm/mach-exynos/mach-u1.c:5101: warning: initialization makes integer from pointer without a cast
-make[1]: *** [arch/arm/mach-exynos/mach-u1.o] Error 1
-make: *** [arch/arm/mach-exynos] Error 2
-make: *** Waiting for unfinished jobs....
 In file included from drivers/usb/gadget/android.c:48:
 drivers/usb/gadget/u_serial.c:141:1: warning: "pr_vdebug" redefined
 In file included from drivers/usb/gadget/android.c:45:
 drivers/usb/gadget/f_fs.c:40:1: warning: this is the location of the previous definition
-make[2]: *** [drivers/mmc/host] Error 2
-make[1]: *** [drivers/mmc] Error 2
+make[1]: *** [arch/arm/mach-exynos/mach-u1.o] Error 1
+make: *** [arch/arm/mach-exynos] Error 2
+make: *** Waiting for unfinished jobs....
+  LD      drivers/input/keyboard/built-in.o
+  LD      drivers/input/built-in.o
+  LD      kernel/built-in.o
 drivers/usb/gadget/android.c:1565: internal compiler error: in dwarf2out_finish, at dwarf2out.c:18906
 Please submit a full bug report,
 with preprocessed source if appropriate.
