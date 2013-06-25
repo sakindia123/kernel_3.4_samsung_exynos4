@@ -4,54 +4,32 @@ arch/arm/mach-exynos/pm-exynos4.c:421: warning: excess elements in struct initia
 arch/arm/mach-exynos/pm-exynos4.c:421: warning: (near initialization for 'exynos4_pm_driver')
 arch/arm/mach-exynos/pm-exynos4.c: In function 'exynos4_pm_drvinit':
 arch/arm/mach-exynos/pm-exynos4.c:439: warning: implicit declaration of function 'sysdev_driver_register'
-drivers/samsung/fm_si4709/Si4709_dev.c: In function 'Si4709_dev_init':make[1]: *** [arch/arm/mach-exynos/pm-exynos4.o] Error 1
-
-drivers/samsung/fm_si4709/Si4709_dev.c:115: error: 'system_rev' undeclared (first use in this function)
-drivers/samsung/fm_si4709/Si4709_dev.c:115: error: (Each undeclared identifier is reported only once
-drivers/samsung/fm_si4709/Si4709_dev.c:115: error: for each function it appears in.)
-drivers/power/sec_battery_u1.c: In function 'sec_bat_show_property':make[3]: *** [drivers/samsung/fm_si4709/Si4709_dev.o] Error 1
-make[3]: *** Waiting for unfinished jobs....
-
-drivers/power/sec_battery_u1.c:2647: error: 'system_rev' undeclared (first use in this function)
-drivers/power/sec_battery_u1.c:2647: error: (Each undeclared identifier is reported only once
-drivers/power/sec_battery_u1.c:2647: error: for each function it appears in.)
-arch/arm/mach-exynos/board-u1-modems.c: In function 'set_slave_wake':drivers/power/sec_battery_u1.c: In function 'sec_bat_probe':arch/arm/mach-exynos/tmu.c:381: warning: 'dev_attr_print_state' defined but not used
-drivers/power/sec_battery_u1.c:3129: error: 'system_rev' undeclared (first use in this function)
-
-rivers/mmc/host/mshci.c: In function 'mshci_set_ios':
-drivers/mmc/host/mshci.c:1236: error: 'struct mmc_ios' has no member named 'ddr'
-drivers/mmc/host/mshci.c:1244: error: 'struct mmc_ios' has no member named 'ddr'
-
-arch/arm/mach-exynos/board-u1-modems.c:245: warning: unused variable 'spin'
-make[2]: *** [drivers/power/sec_battery_u1.o] Error 1
-make[2]: *** Waiting for unfinished jobs....
+make[1]: *** [arch/arm/mach-exynos/pm-exynos4.o] Error 1
+make[1]: *** Waiting for unfinished jobs....
 drivers/mmc/host/sdhci-s3c.c: In function 'sdhci_s3c_gpio_card_detect_thread':
 drivers/mmc/host/sdhci-s3c.c:410: warning: implicit declaration of function 'mmc_host_sd_set_present'
 drivers/mmc/host/sdhci-s3c.c:412: warning: implicit declaration of function 'mmc_host_sd_clear_present'
 drivers/mmc/host/sdhci-s3c.c:414: warning: implicit declaration of function 'mmc_host_sd_present'
-drivers/mmc/host/sdhci-s3c.c: In function 'sdhci_s3c_probe':
+drivers/mmc/host/sdhci-s3c.c: In function 'sdhci_s3c_probe':drivers/regulator/max8997.c: In function 'max8997_pmic_probe':
 drivers/mmc/host/sdhci-s3c.c:624: error: 'struct sdhci_host' has no member named 'vmmc_name'
 drivers/mmc/host/sdhci-s3c.c: In function 'sdhci_s3c_suspend':
+drivers/regulator/max8997.c:1366: error: too few arguments to function 'regulator_register'
+
 drivers/mmc/host/sdhci-s3c.c:781: error: too many arguments to function 'sdhci_suspend_host'
 drivers/mmc/host/sdhci-s3c.c: In function 'sdhci_s3c_shutdown':
 drivers/mmc/host/sdhci-s3c.c:790: warning: implicit declaration of function 'sdhci_shutdown_host'
 make[3]: *** [drivers/mmc/host/sdhci-s3c.o] Error 1
-make[2]: *** [drivers/mmc/host] Error 2
-make[1]: *** [drivers/mmc] Error 2
+make[3]: *** Waiting for unfinished jobs....
+make[2]: *** [drivers/regulator/max8997.o] Error 1
+make[1]: *** [drivers/regulator] Error 2
 make[1]: *** Waiting for unfinished jobs....
-drivers/power/max8997_charger_u1.c: In function 'max8997_chg_charger_irq':
-drivers/power/max8997_charger_u1.c:335: error: 'system_rev' undeclared (first use in this function)
-drivers/power/max8997_charger_u1.c:335: error: (Each undeclared identifier is reported only once
-drivers/power/max8997_charger_u1.c:335: error: for each function it appears in.)
 arch/arm/mach-exynos/stand-hotplug.c:105: error: expected ')' before 'uint'
 arch/arm/mach-exynos/stand-hotplug.c:107: error: expected ')' before 'uint'
 arch/arm/mach-exynos/stand-hotplug.c:109: error: expected ')' before 'uint'
 arch/arm/mach-exynos/stand-hotplug.c:111: error: expected ')' before 'uint'
 arch/arm/mach-exynos/stand-hotplug.c:114: error: expected ')' before 'uint'
 arch/arm/mach-exynos/stand-hotplug.c:116: error: expected ')' before 'uint'
-arch/arm/mach-exynos/stand-hotplug.c:118: error: expected ')' before 'uint'make[2]: *** [drivers/power/max8997_charger_u1.o] Error 1
-make[1]: *** [drivers/power] Error 2
-
+arch/arm/mach-exynos/stand-hotplug.c:118: error: expected ')' before 'uint'
 arch/arm/mach-exynos/stand-hotplug.c:121: error: 'TRANS_LOAD_L2' undeclared here (not in a function)
 arch/arm/mach-exynos/stand-hotplug.c:122: error: expected ')' before 'uint'
 arch/arm/mach-exynos/stand-hotplug.c:123: error: 'TRANS_LOAD_H2' undeclared here (not in a function)
@@ -62,64 +40,27 @@ arch/arm/mach-exynos/stand-hotplug.c: In function 'hotplug_timer':
 arch/arm/mach-exynos/stand-hotplug.c:248: warning: implicit declaration of function 'cputime64_sub'
 arch/arm/mach-exynos/stand-hotplug.c:268: warning: implicit declaration of function 'get_cpu_nr_running'
 make[1]: *** [arch/arm/mach-exynos/stand-hotplug.o] Error 1
-drivers/samsung/fm_si4709/Si4709_main.c: In function 'Si4709_driver_init':
-drivers/samsung/fm_si4709/Si4709_main.c:780: error: 'system_rev' undeclared (first use in this function)
-drivers/samsung/fm_si4709/Si4709_main.c:780: error: (Each undeclared identifier is reported only once
-drivers/samsung/fm_si4709/Si4709_main.c:780: error: for each function it appears in.)
-make[3]: *** [drivers/samsung/fm_si4709/Si4709_main.o] Error 1
-make[2]: *** [drivers/samsung/fm_si4709] Error 2
-make[1]: *** [drivers/samsung] Error 2
-drivers/regulator/max8997.c: In function 'max8997_pmic_probe':
-drivers/regulator/max8997.c:1366: error: too few arguments to function 'regulator_register'
-make[2]: *** [drivers/regulator/max8997.o] Error 1
-make[1]: *** [drivers/regulator] Error 2
-arch/arm/mach-exynos/mach-u1.c: In function 'm5mo_power_on':drivers/video/samsung/mdnie.c:1010: error: 'mdnie_suspend' undeclared here (not in a function)
-arch/arm/mach-exynos/mach-u1.c:325: error: 'system_rev' undeclared (first use in this function)
-arch/arm/mach-exynos/mach-u1.c:325: error: (Each undeclared identifier is reported only once
-arch/arm/mach-exynos/mach-u1.c:325: error: for each function it appears in.)
-
-drivers/video/samsung/mdnie.c:1011: error: 'mdnie_resume' undeclared here (not in a function)drivers/video/samsung/ld9040.c:85: error: field 'early_suspend' has incomplete type
-
-arch/arm/mach-exynos/mach-u1.c: In function 'sii9234_cfg_gpio':
-arch/arm/mach-exynos/mach-u1.c:488: error: 'system_rev' undeclared (first use in this function)
-arch/arm/mach-exynos/mach-u1.c: In function 'sii9234_power_onoff':
-arch/arm/mach-exynos/mach-u1.c:518: error: 'system_rev' undeclared (first use in this function)
-make[3]: *** [drivers/video/samsung/mdnie.o] Error 1
-make[3]: *** Waiting for unfinished jobs....
-arch/arm/mach-exynos/mach-u1.c: In function 's5k5bafx_power_on':
-arch/arm/mach-exynos/mach-u1.c:953: error: 'system_rev' undeclared (first use in this function)
-make[3]: *** [drivers/video/samsung/ld9040.o] Error 1
-arch/arm/mach-exynos/mach-u1.c: In function 's5k5bafx_power_off':
-arch/arm/mach-exynos/mach-u1.c:1112: error: 'system_rev' undeclared (first use in this function)
-arch/arm/mach-exynos/mach-u1.c: In function 'cam_cfg_gpio':
-arch/arm/mach-exynos/mach-u1.c:1557: error: 'system_rev' undeclared (first use in this function)
-arch/arm/mach-exynos/mach-u1.c: At top level:
-arch/arm/mach-exynos/mach-u1.c:3781: error: 'max8997_muic_usb_cb' undeclared here (not in a function)
-arch/arm/mach-exynos/mach-u1.c: In function 'max8922_cfg_gpio':
-arch/arm/mach-exynos/mach-u1.c:4118: error: 'system_rev' undeclared (first use in this function)
-arch/arm/mach-exynos/mach-u1.c: At top level:
-arch/arm/mach-exynos/mach-u1.c:5082: error: unknown field 'isr_hook' specified in initializer
-arch/arm/mach-exynos/mach-u1.c:5082: warning: initialization makes integer from pointer without a cast
-arch/arm/mach-exynos/mach-u1.c:5091: error: unknown field 'isr_hook' specified in initializer
-arch/arm/mach-exynos/mach-u1.c:5091: warning: initialization makes integer from pointer without a cast
-arch/arm/mach-exynos/mach-u1.c:5100: error: unknown field 'isr_hook' specified in initializer
-arch/arm/mach-exynos/mach-u1.c:5100: warning: initialization makes integer from pointer without a cast
-arch/arm/mach-exynos/mach-u1.c: In function 'max17042_need_soc_recal':drivers/video/samsung/lcdfreq.c: In function 'lcdfreq_init':
-arch/arm/mach-exynos/mach-u1.c:6418: error: 'system_rev' undeclared (first use in this function)
-
-drivers/video/samsung/lcdfreq.c:534: error: 'struct early_suspend' has no member named 'suspend'
-drivers/video/samsung/lcdfreq.c:535: error: 'struct early_suspend' has no member named 'resume'
-drivers/video/samsung/lcdfreq.c:536: error: 'struct early_suspend' has no member named 'level'
-make[3]: *** [drivers/video/samsung/lcdfreq.o] Error 1
-make[2]: *** [drivers/video/samsung] Error 2
-make[1]: *** [drivers/video] Error 2
+drivers/mmc/host/mshci.c: In function 'mshci_set_ios':
+drivers/mmc/host/mshci.c:1236: error: 'struct mmc_ios' has no member named 'ddr'
+drivers/mmc/host/mshci.c:1244: error: 'struct mmc_ios' has no member named 'ddr'
+make[3]: *** [drivers/mmc/host/mshci.o] Error 1
+make[2]: *** [drivers/mmc/host] Error 2
+make[1]: *** [drivers/mmc] Error 2
+arch/arm/mach-exynos/mach-u1.c:3782: error: 'max8997_muic_usb_cb' undeclared here (not in a function)
+arch/arm/mach-exynos/mach-u1.c:5083: error: unknown field 'isr_hook' specified in initializer
+arch/arm/mach-exynos/mach-u1.c:5083: warning: initialization makes integer from pointer without a cast
+arch/arm/mach-exynos/mach-u1.c:5092: error: unknown field 'isr_hook' specified in initializer
+arch/arm/mach-exynos/mach-u1.c:5092: warning: initialization makes integer from pointer without a cast
+arch/arm/mach-exynos/mach-u1.c:5101: error: unknown field 'isr_hook' specified in initializer
+arch/arm/mach-exynos/mach-u1.c:5101: warning: initialization makes integer from pointer without a cast
+make[1]: *** [arch/arm/mach-exynos/mach-u1.o] Error 1
+make: *** [arch/arm/mach-exynos] Error 2
+make: *** Waiting for unfinished jobs....
+  LD      drivers/power/built-in.o
 In file included from drivers/usb/gadget/android.c:48:
 drivers/usb/gadget/u_serial.c:141:1: warning: "pr_vdebug" redefined
 In file included from drivers/usb/gadget/android.c:45:
 drivers/usb/gadget/f_fs.c:40:1: warning: this is the location of the previous definition
-make[1]: *** [arch/arm/mach-exynos/mach-u1.o] Error 1
-make: *** [arch/arm/mach-exynos] Error 2
-make: *** Waiting for unfinished jobs....
 drivers/usb/gadget/android.c:1565: internal compiler error: in dwarf2out_finish, at dwarf2out.c:18906
 Please submit a full bug report,
 with preprocessed source if appropriate.
@@ -127,3 +68,4 @@ See <http://gcc.gnu.org/bugs.html> for instructions.
 make[3]: *** [drivers/usb/gadget/android.o] Error 1
 make[2]: *** [drivers/usb/gadget] Error 2
 make[1]: *** [drivers/usb] Error 2
+make: *** [drivers] Error 2

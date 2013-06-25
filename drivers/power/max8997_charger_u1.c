@@ -55,6 +55,8 @@
 #define AUTOSTOP_SHIFT		5
 #define AUTOSTOP_MASK		(1 << AUTOSTOP_SHIFT)
 
+extern unsigned int system_rev;
+
 enum {
 	BAT_NOT_DETECTED,
 	BAT_DETECTED

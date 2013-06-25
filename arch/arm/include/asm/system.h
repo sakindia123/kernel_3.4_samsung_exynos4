@@ -9,6 +9,8 @@
 void arm_machine_restart(char mode, const char *cmd);
 extern void (*arm_pm_restart)(char str, const char *cmd);
 
+extern unsigned int system_rev;
+
 /*
  * CR1 bits (CP#15 CR1)
  */

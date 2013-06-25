@@ -25,6 +25,8 @@
 #include "Si4709_ioctl.h"
 #include "Si4709_common.h"
 
+extern unsigned int system_rev;
+
 /*******************************************************/
 
 /*static functions*/

@@ -224,6 +224,8 @@
 #define SPRINT_SLATE_TEST
 #endif
 
+extern unsigned int system_rev;
+
 enum tmu_status_t {
 	TMU_STATUS_NORMAL = 0,
 	TMU_STATUS_TRIPPED,
