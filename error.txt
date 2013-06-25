@@ -1,13 +1,3 @@
-arch/arm/mach-exynos/hotplug.c: In function 'cpu_enter_lowpower_a9':
-arch/arm/mach-exynos/hotplug.c:44: error: 'CR_C' undeclared (first use in this function)
-arch/arm/mach-exynos/hotplug.c:44: error: (Each undeclared identifier is reported only once
-arch/arm/mach-exynos/hotplug.c:44: error: for each function it appears in.)
-arch/arm/mach-exynos/hotplug.c: In function 'cpu_enter_lowpower_a15':
-arch/arm/mach-exynos/hotplug.c:57: error: 'CR_C' undeclared (first use in this function)
-arch/arm/mach-exynos/hotplug.c: In function 'cpu_leave_lowpower':
-arch/arm/mach-exynos/hotplug.c:89: error: 'CR_C' undeclared (first use in this function)
-make[1]: *** [arch/arm/mach-exynos/hotplug.o] Error 1
-make[1]: *** Waiting for unfinished jobs....
 arch/arm/mach-exynos/pm-exynos4.c:420: error: variable 'exynos4_pm_driver' has initializer but incomplete type
 arch/arm/mach-exynos/pm-exynos4.c:421: error: unknown field 'add' specified in initializer
 arch/arm/mach-exynos/pm-exynos4.c:421: warning: excess elements in struct initializer
