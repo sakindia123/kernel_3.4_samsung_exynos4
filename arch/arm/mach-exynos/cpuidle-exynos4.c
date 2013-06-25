@@ -10,7 +10,7 @@
 
 #include <linux/kernel.h>
 #include <linux/init.h>
-#include <linux/cpuidle.h>
+#include "cpuidle-exynos4.h"
 #include <linux/io.h>
 #include <linux/suspend.h>
 #include <linux/platform_device.h>

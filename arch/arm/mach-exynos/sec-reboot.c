@@ -5,6 +5,7 @@
 #include <mach/system.h>
 #include <mach/regs-pmu.h>
 #include <mach/gpio.h>
+#include <asm/system.h>
 
 /* charger cable state */
 extern bool is_cable_attached;

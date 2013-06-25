@@ -20,6 +20,7 @@
 #include <linux/cpufreq.h>
 #include <linux/suspend.h>
 #include <linux/reboot.h>
+#include <linux/module.h>
 #include <linux/pm_qos_params.h>
 
 #include <mach/map.h>
