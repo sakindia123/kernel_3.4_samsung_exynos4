@@ -18,6 +18,7 @@
 #include <linux/mutex.h>
 #include <linux/platform_device.h>
 #include <linux/mfd/max8997-private.h>
+#include <linux/module.h>
 #if defined(CONFIG_RTC_ALARM_BOOT)
 #include <linux/io.h>
 #include <linux/reboot.h>
