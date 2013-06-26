@@ -1,25 +1,8 @@
-drivers/mmc/host/sdhci-s3c.c: In function 'sdhci_s3c_gpio_card_detect_thread':
-drivers/mmc/host/sdhci-s3c.c:410:4: warning: implicit declaration of function 'mmc_host_sd_set_present' [-Wimplicit-function-declaration]
-drivers/mmc/host/sdhci-s3c.c:412:4: warning: implicit declaration of function 'mmc_host_sd_clear_present' [-Wimplicit-function-declaration]
-drivers/mmc/host/sdhci-s3c.c:414:3: warning: implicit declaration of function 'mmc_host_sd_present' [-Wimplicit-function-declaration]
-drivers/mmc/host/sdhci-s3c.c: In function 'sdhci_s3c_suspend':
-drivers/mmc/host/sdhci-s3c.c:781:2: error: too many arguments to function 'sdhci_suspend_host'
-In file included from drivers/mmc/host/sdhci-s3c.c:30:0:
-drivers/mmc/host/sdhci.h:380:12: note: declared here
-drivers/mmc/host/sdhci-s3c.c: In function 'sdhci_s3c_shutdown':
-drivers/mmc/host/sdhci-s3c.c:790:2: warning: implicit declaration of function 'sdhci_shutdown_host' [-Wimplicit-function-declaration]
-make[3]: *** [drivers/mmc/host/sdhci-s3c.o] Error 1
-make[2]: *** [drivers/mmc/host] Error 2
-make[1]: *** [drivers/mmc] Error 2
-make[1]: *** Waiting for unfinished jobs....
 arch/arm/mach-exynos/mach-u1.c: In function 'm5mo_flash_power':
 arch/arm/mach-exynos/mach-u1.c:828:1: warning: label 'torch_exit' defined but not used [-Wunused-label]
 arch/arm/mach-exynos/mach-u1.c: At top level:
 arch/arm/mach-exynos/mach-u1.c:3780:12: error: 'max8997_muic_usb_cb' undeclared here (not in a function)
 arch/arm/mach-exynos/mach-u1.c:4709:13: warning: 'sec_bat_initial_check' defined but not used [-Wunused-function]
 make[1]: *** [arch/arm/mach-exynos/mach-u1.o] Error 1
-make[1]: *** Waiting for unfinished jobs....
 make: *** [arch/arm/mach-exynos] Error 2
 make: *** Waiting for unfinished jobs....
-make: *** [drivers] Error 2
-
