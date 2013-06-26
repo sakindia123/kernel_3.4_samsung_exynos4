@@ -27,7 +27,7 @@
 #include <plat/regs-sdhci.h>
 #include <plat/gpio-cfg.h>
 
-#include "sdhci.h"
+#include "sdhci-s3c.h"
 
 #define MAX_BUS_CLK	(4)
 
