@@ -13,6 +13,7 @@ struct gpio_keys_button {
 	int wakeup;		/* configure the button as a wake-up source */
 	int debounce_interval;	/* debounce ticks interval in msecs */
 	bool can_disable;
+        void (*isr_hook)(unsigned int code, int value); /*key callback funtion*/
 	int value;		/* axis value for EV_ABS */
 	unsigned int irq;	/* Irq number in case of interrupt keys */
 };
