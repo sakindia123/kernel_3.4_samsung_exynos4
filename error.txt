@@ -1,17 +1,8 @@
-arch/arm/mach-exynos/pm-exynos4.c:420:15: error: variable 'exynos4_pm_driver' has initializer but incomplete type
-arch/arm/mach-exynos/pm-exynos4.c:421:2: error: unknown field 'add' specified in initializer
-arch/arm/mach-exynos/pm-exynos4.c:421:2: warning: excess elements in struct initializer [enabled by default]
-arch/arm/mach-exynos/pm-exynos4.c:421:2: warning: (near initialization for 'exynos4_pm_driver') [enabled by default]
-arch/arm/mach-exynos/pm-exynos4.c: In function 'exynos4_pm_drvinit':
-arch/arm/mach-exynos/pm-exynos4.c:439:2: warning: implicit declaration of function 'sysdev_driver_register' [-Wimplicit-function-declaration]
-make[1]: *** [arch/arm/mach-exynos/pm-exynos4.o] Error 1
-make[1]: *** Waiting for unfinished jobs....
 drivers/mmc/host/sdhci-s3c.c: In function 'sdhci_s3c_gpio_card_detect_thread':
 drivers/mmc/host/sdhci-s3c.c:410:4: warning: implicit declaration of function 'mmc_host_sd_set_present' [-Wimplicit-function-declaration]
 drivers/mmc/host/sdhci-s3c.c:412:4: warning: implicit declaration of function 'mmc_host_sd_clear_present' [-Wimplicit-function-declaration]
 drivers/mmc/host/sdhci-s3c.c:414:3: warning: implicit declaration of function 'mmc_host_sd_present' [-Wimplicit-function-declaration]
-drivers/mmc/host/sdhci-s3c.c: In function 'sdhci_s3c_suspend':arch/arm/mach-exynos/tmu.c:381:1: warning: 'dev_attr_print_state' defined but not used [-Wunused-variable]
-
+drivers/mmc/host/sdhci-s3c.c: In function 'sdhci_s3c_suspend':
 drivers/mmc/host/sdhci-s3c.c:781:2: error: too many arguments to function 'sdhci_suspend_host'
 In file included from drivers/mmc/host/sdhci-s3c.c:30:0:
 drivers/mmc/host/sdhci.h:380:12: note: declared here
@@ -21,6 +12,8 @@ make[3]: *** [drivers/mmc/host/sdhci-s3c.o] Error 1
 make[2]: *** [drivers/mmc/host] Error 2
 make[1]: *** [drivers/mmc] Error 2
 make[1]: *** Waiting for unfinished jobs....
+make: *** [drivers] Error 2
+make: *** Waiting for unfinished jobs....
 arch/arm/mach-exynos/stand-hotplug.c:105:43: error: expected ')' before 'uint'
 arch/arm/mach-exynos/stand-hotplug.c:107:37: error: expected ')' before 'uint'
 arch/arm/mach-exynos/stand-hotplug.c:109:38: error: expected ')' before 'uint'
@@ -28,18 +21,16 @@ arch/arm/mach-exynos/stand-hotplug.c:111:44: error: expected ')' before 'uint'
 arch/arm/mach-exynos/stand-hotplug.c:114:44: error: expected ')' before 'uint'
 arch/arm/mach-exynos/stand-hotplug.c:116:44: error: expected ')' before 'uint'
 arch/arm/mach-exynos/stand-hotplug.c:118:44: error: expected ')' before 'uint'
-arch/arm/mach-exynos/stand-hotplug.c:121:37: error: 'TRANS_LOAD_L2' undeclared here (not in a function)
-arch/arm/mach-exynos/stand-hotplug.c:122:44: error: expected ')' before 'uint'
-arch/arm/mach-exynos/stand-hotplug.c:123:37: error: 'TRANS_LOAD_H2' undeclared here (not in a function)
-arch/arm/mach-exynos/stand-hotplug.c:124:44: error: expected ')' before 'uint'
-arch/arm/mach-exynos/stand-hotplug.c:125:37: error: 'TRANS_LOAD_L3' undeclared here (not in a function)
-arch/arm/mach-exynos/stand-hotplug.c:126:44: error: expected ')' before 'uint'
 arch/arm/mach-exynos/stand-hotplug.c: In function 'hotplug_timer':
 arch/arm/mach-exynos/stand-hotplug.c:248:3: warning: implicit declaration of function 'cputime64_sub' [-Wimplicit-function-declaration]
 arch/arm/mach-exynos/stand-hotplug.c:268:3: warning: implicit declaration of function 'get_cpu_nr_running' [-Wimplicit-function-declaration]
 make[1]: *** [arch/arm/mach-exynos/stand-hotplug.o] Error 1
-make: *** [drivers] Error 2
-make: *** Waiting for unfinished jobs....
-arch/arm/mach-exynos/mach-u1.c:3782:12: error: 'max8997_muic_usb_cb' undeclared here (not in a function)
+make[1]: *** Waiting for unfinished jobs....
+arch/arm/mach-exynos/mach-u1.c: In function 'm5mo_flash_power':
+arch/arm/mach-exynos/mach-u1.c:828:1: warning: label 'torch_exit' defined but not used [-Wunused-label]
+arch/arm/mach-exynos/mach-u1.c: At top level:
+arch/arm/mach-exynos/mach-u1.c:3780:12: error: 'max8997_muic_usb_cb' undeclared here (not in a function)
+arch/arm/mach-exynos/mach-u1.c:4709:13: warning: 'sec_bat_initial_check' defined but not used [-Wunused-function]
 make[1]: *** [arch/arm/mach-exynos/mach-u1.o] Error 1
 make: *** [arch/arm/mach-exynos] Error 2
+  LD      kernel/built-in.o
