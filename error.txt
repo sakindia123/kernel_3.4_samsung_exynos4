@@ -12,25 +12,14 @@ make[3]: *** [drivers/mmc/host/sdhci-s3c.o] Error 1
 make[2]: *** [drivers/mmc/host] Error 2
 make[1]: *** [drivers/mmc] Error 2
 make[1]: *** Waiting for unfinished jobs....
-make: *** [drivers] Error 2
-make: *** Waiting for unfinished jobs....
-arch/arm/mach-exynos/stand-hotplug.c:105:43: error: expected ')' before 'uint'
-arch/arm/mach-exynos/stand-hotplug.c:107:37: error: expected ')' before 'uint'
-arch/arm/mach-exynos/stand-hotplug.c:109:38: error: expected ')' before 'uint'
-arch/arm/mach-exynos/stand-hotplug.c:111:44: error: expected ')' before 'uint'
-arch/arm/mach-exynos/stand-hotplug.c:114:44: error: expected ')' before 'uint'
-arch/arm/mach-exynos/stand-hotplug.c:116:44: error: expected ')' before 'uint'
-arch/arm/mach-exynos/stand-hotplug.c:118:44: error: expected ')' before 'uint'
-arch/arm/mach-exynos/stand-hotplug.c: In function 'hotplug_timer':
-arch/arm/mach-exynos/stand-hotplug.c:248:3: warning: implicit declaration of function 'cputime64_sub' [-Wimplicit-function-declaration]
-arch/arm/mach-exynos/stand-hotplug.c:268:3: warning: implicit declaration of function 'get_cpu_nr_running' [-Wimplicit-function-declaration]
-make[1]: *** [arch/arm/mach-exynos/stand-hotplug.o] Error 1
-make[1]: *** Waiting for unfinished jobs....
 arch/arm/mach-exynos/mach-u1.c: In function 'm5mo_flash_power':
 arch/arm/mach-exynos/mach-u1.c:828:1: warning: label 'torch_exit' defined but not used [-Wunused-label]
 arch/arm/mach-exynos/mach-u1.c: At top level:
 arch/arm/mach-exynos/mach-u1.c:3780:12: error: 'max8997_muic_usb_cb' undeclared here (not in a function)
 arch/arm/mach-exynos/mach-u1.c:4709:13: warning: 'sec_bat_initial_check' defined but not used [-Wunused-function]
 make[1]: *** [arch/arm/mach-exynos/mach-u1.o] Error 1
+make[1]: *** Waiting for unfinished jobs....
 make: *** [arch/arm/mach-exynos] Error 2
-  LD      kernel/built-in.o
+make: *** Waiting for unfinished jobs....
+make: *** [drivers] Error 2
+
