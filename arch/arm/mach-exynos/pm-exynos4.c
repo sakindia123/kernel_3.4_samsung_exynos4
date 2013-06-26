@@ -19,6 +19,7 @@
 #include <linux/syscore_ops.h>
 #include <linux/io.h>
 #include <linux/regulator/machine.h>
+#include <linux/sysdev.h>
 
 #if defined(CONFIG_MACH_M0_CTC)
 #include <linux/mfd/max77693.h>
