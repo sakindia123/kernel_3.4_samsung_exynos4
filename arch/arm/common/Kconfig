@@ -21,6 +21,9 @@ config ARM_VIC_NR
 	  The maximum number of VICs available in the system, for
 	  power management.
 
+config PL330
+	bool
+
 config ICST
 	bool
 
