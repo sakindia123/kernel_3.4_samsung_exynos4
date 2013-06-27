@@ -72,6 +72,8 @@
 struct thread_info;
 struct task_struct;
 
+#define cputime64_sub(__a, __b)		((__a) - (__b))
+
 /* information about the system we're running on */
 extern unsigned int system_rev;
 extern unsigned int system_serial_low;

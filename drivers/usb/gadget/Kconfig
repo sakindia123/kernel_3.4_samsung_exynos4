@@ -545,17 +545,6 @@ endchoice
 comment "NOTE: S3C OTG device role enables the controller driver below"
 	depends on USB_GADGET_S3C_OTGD
 
-config USB_S3C_OTGD
-	tristate "S3C high speed(2.0, dual-speed) USB OTG device"
-	depends on USB_GADGET && USB_GADGET_S3C_OTGD
-	default y
-	default USB_GADGET
-	select USB_GADGET_SELECTED
-	select USB_GADGET_DUALSPEED
-	help
-	  Say "y" to link the driver statically, or "m" to build a
-	  dynamically linked module called "s3c-udc-otg-hs" and force all
-	  gadget drivers to also be dynamically linked.
 
 # Selected by UDC drivers that support high-speed operation.
 config USB_GADGET_DUALSPEED
@@ -884,6 +873,18 @@ config USB_G_ANDROID
 	  and rndis.
 	  Each function can be configured and enabled/disabled
 	  dynamically from userspace through a sysfs interface.
+
+config USB_S3C_OTGD
+	tristate "S3C high speed(2.0, dual-speed) USB OTG device"
+	depends on USB_GADGET && USB_GADGET_S3C_OTGD
+	default y
+	default USB_GADGET
+	select USB_GADGET_SELECTED
+	select USB_GADGET_DUALSPEED
+	help
+	  Say "y" to link the driver statically, or "m" to build a
+	  dynamically linked module called "s3c-udc-otg-hs" and force all
+	  gadget drivers to also be dynamically linked.
 
 config USB_CDC_COMPOSITE
 	tristate "CDC Composite Device (Ethernet and ACM)"
