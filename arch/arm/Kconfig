@@ -426,6 +426,22 @@ config ARCH_EBSA110
 	  Ethernet interface, two PCMCIA sockets, two serial ports and a
 	  parallel port.
 
+config ARCH_S3C2410
+	bool "Samsung S3C2410, S3C2412, S3C2413, S3C2416, S3C2440, S3C2442, S3C2443, S3C2450"
+	select GENERIC_GPIO
+	select ARCH_HAS_CPUFREQ
+	select HAVE_CLK
+	select ARCH_USES_GETTIMEOFFSET
+	select HAVE_S3C2410_I2C if I2C
+	help
+	  Samsung S3C2410X CPU based systems, such as the Simtec Electronics
+	  BAST (<http://www.simtec.co.uk/products/EB110ITX/>), the IPAQ 1940 or
+	  the Samsung SMDK2410 development board (and derivatives).
+
+	  Note, the S3C2416 and the S3C2450 are so close that they even share
+	  the same SoC ID code. This means that there is no separate machine
+	  directory (no arch/arm/mach-s3c2450) as the S3C2416 was first.
+
 config ARCH_EP93XX
 	bool "EP93xx-based"
 	select CPU_ARM920T
@@ -1127,6 +1143,15 @@ source "arch/arm/plat-versatile/Kconfig"
 source "arch/arm/mach-vt8500/Kconfig"
 
 source "arch/arm/mach-w90x900/Kconfig"
+
+if ARCH_S3C2410
+source "arch/arm/mach-s3c2400/Kconfig"
+source "arch/arm/mach-s3c2410/Kconfig"
+source "arch/arm/mach-s3c2412/Kconfig"
+source "arch/arm/mach-s3c2416/Kconfig"
+source "arch/arm/mach-s3c2440/Kconfig"
+source "arch/arm/mach-s3c2443/Kconfig"
+endif
 
 # Definitions to make life easier
 config ARCH_ACORN

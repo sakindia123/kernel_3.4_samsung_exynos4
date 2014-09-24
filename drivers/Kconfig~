@@ -62,6 +62,8 @@ source "drivers/gpio/Kconfig"
 
 source "drivers/w1/Kconfig"
 
+source "drivers/battery/Kconfig"
+
 source "drivers/power/Kconfig"
 
 source "drivers/hwmon/Kconfig"
@@ -141,5 +143,11 @@ source "drivers/rpmsg/Kconfig"
 source "drivers/virt/Kconfig"
 
 source "drivers/devfreq/Kconfig"
+
+source "drivers/sensor/Kconfig"
+
+source "drivers/sensorhub/Kconfig"
+
+source "drivers/motor/Kconfig"
 
 endmenu

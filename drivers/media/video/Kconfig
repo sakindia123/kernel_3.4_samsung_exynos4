@@ -1222,3 +1222,7 @@ config VIDEO_MX2_EMMAPRP
 	    conversion.
 
 endif # V4L_MEM2MEM_DRIVERS
+
+source "drivers/media/video/samsung/Kconfig"
+source "drivers/media/video/exynos/Kconfig"
+source "drivers/media/video/mhl/Kconfig"
