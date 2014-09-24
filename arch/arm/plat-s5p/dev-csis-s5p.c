@@ -16,6 +16,7 @@
 #include <plat/devs.h>
 #include <plat/cpu.h>
 #include <plat/csis.h>
+#include <linux/mm.h>
 
 static struct resource s3c_csis0_resource[] = {
 	[0] = {

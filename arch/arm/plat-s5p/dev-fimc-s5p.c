@@ -18,6 +18,7 @@
 #include <plat/devs.h>
 #include <plat/cpu.h>
 #include <plat/fimc.h>
+#include <linux/mm.h>
 #ifdef CONFIG_USE_FIMC_CMA
 #include <linux/dma-mapping.h>
 

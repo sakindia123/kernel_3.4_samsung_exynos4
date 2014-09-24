@@ -15,7 +15,7 @@
 #include <linux/smp.h>
 #include <linux/completion.h>
 #include <linux/io.h>
-
+#include <asm/system.h>
 #include <asm/cacheflush.h>
 
 #include <plat/cpu.h>

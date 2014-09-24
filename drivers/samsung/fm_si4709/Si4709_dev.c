@@ -60,6 +60,8 @@ struct workqueue_struct *Si4709_wq;
 struct work_struct Si4709_work;
 #endif
 
+extern unsigned int system_rev;
+
 /*static functions*/
 /**********************************************/
 static void wait(void);

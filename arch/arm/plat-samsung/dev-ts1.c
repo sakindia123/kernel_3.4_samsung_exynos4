@@ -23,6 +23,8 @@
 #include <plat/devs.h>
 #include <plat/ts.h>
 
+#include <linux/mm.h>
+
 static struct resource s3c_ts_resource[] = {
 	[0] = {
 		.start = SAMSUNG_PA_ADC1,

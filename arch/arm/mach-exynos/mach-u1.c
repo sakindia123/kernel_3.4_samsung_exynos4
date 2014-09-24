@@ -11,6 +11,7 @@
 #include <linux/serial_core.h>
 #include <linux/delay.h>
 #include <linux/gpio.h>
+#include <linux/module.h>
 #include <linux/gpio_keys.h>
 #include <linux/gpio_event.h>
 #include <linux/lcd.h>
@@ -61,6 +62,7 @@
 
 #include <asm/mach/arch.h>
 #include <asm/mach-types.h>
+#include <asm/system.h>
 
 #include <video/platform_lcd.h>
 

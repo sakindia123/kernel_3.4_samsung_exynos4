@@ -1,5 +1,6 @@
 #include <linux/device.h>
 #include <linux/err.h>
+#include <linux/module.h>
 
 struct class *sec_class;
 EXPORT_SYMBOL(sec_class);

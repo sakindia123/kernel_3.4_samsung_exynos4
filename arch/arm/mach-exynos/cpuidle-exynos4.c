@@ -10,11 +10,12 @@
 
 #include <linux/kernel.h>
 #include <linux/init.h>
-#include <linux/cpuidle.h>
+#include "cpuidle-exynos4.h"
 #include <linux/io.h>
 #include <linux/suspend.h>
 #include <linux/platform_device.h>
 #include <linux/gpio.h>
+#include <linux/module.h>
 
 #include <asm/proc-fns.h>
 #include <asm/tlbflush.h>
@@ -29,6 +30,7 @@
 #include <mach/regs-audss.h>
 #include <mach/asv.h>
 #include <mach/regs-usb-phy.h>
+#include <mach/memory.h>
 
 #include <plat/regs-otg.h>
 #include <plat/exynos4.h>

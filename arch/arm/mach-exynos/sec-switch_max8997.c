@@ -9,6 +9,7 @@
 #include <linux/i2c.h>
 #include <linux/i2c-gpio.h>
 #include <linux/input.h>
+#include <linux/module.h>
 #include <plat/udc-hs.h>
 /*#include <linux/mmc/host.h>*/
 #include <linux/regulator/machine.h>

@@ -12,6 +12,7 @@
 
 #include <linux/io.h>
 #include <linux/kernel.h>
+#include <linux/module.h>
 
 #include <mach/regs-clock.h>
 #include <mach/pmu.h>

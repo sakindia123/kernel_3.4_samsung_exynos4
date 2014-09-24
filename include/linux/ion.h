@@ -45,6 +45,14 @@ enum ion_heap_type {
 #define ION_HEAP_SYSTEM_CONTIG_MASK	(1 << ION_HEAP_TYPE_SYSTEM_CONTIG)
 #define ION_HEAP_CARVEOUT_MASK		(1 << ION_HEAP_TYPE_CARVEOUT)
 
+#ifdef CONFIG_ION_EXYNOS
+#define ION_HEAP_EXYNOS_MASK		(1 << ION_HEAP_TYPE_EXYNOS)
+#define ION_HEAP_EXYNOS_CONTIG_MASK	(1 << ION_HEAP_TYPE_EXYNOS_CONTIG)
+#define ION_HEAP_EXYNOS_USER_MASK	(1 << ION_HEAP_TYPE_EXYNOS_USER)
+#define ION_EXYNOS_NONCACHE_MASK	(1 << (BITS_PER_LONG - 2))
+#define ION_EXYNOS_WRITE_MASK		(1 << (BITS_PER_LONG - 1))
+#endif
+
 #define ION_NUM_HEAP_IDS		sizeof(unsigned int) * 8
 
 /**
@@ -267,6 +275,19 @@ struct ion_allocation_data {
 	unsigned int flags;
 	struct ion_handle *handle;
 };
+
+#ifdef CONFIG_ION_EXYNOS
+struct ion_handle *ion_exynos_get_user_pages(struct ion_client *client,
+			unsigned long uvaddr, size_t len, unsigned int flags);
+#else
+#include <linux/err.h>
+static inline struct ion_handle *ion_exynos_get_user_pages(
+				struct ion_client *client, unsigned long uvaddr,
+				size_t len, unsigned int flags)
+{
+	return ERR_PTR(-ENOSYS);
+}
+#endif
 
 /**
  * struct ion_fd_data - metadata passed to/from userspace for a handle/fd pair

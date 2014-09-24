@@ -15,6 +15,7 @@
 #include <linux/clk.h>
 #include <linux/io.h>
 #include <linux/cpufreq.h>
+#include <linux/module.h>
 
 #include <mach/map.h>
 #include <mach/regs-clock.h>

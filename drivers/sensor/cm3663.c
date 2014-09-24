@@ -30,6 +30,7 @@
 #include <linux/workqueue.h>
 #include <linux/uaccess.h>
 #include <linux/sensor/cm3663.h>
+#include <linux/module.h>
 
 #define PROX_READ_NUM		40
 
