@@ -1,6 +1,7 @@
 # S3c24XX Platform Support
 snd-soc-s3c24xx-objs := dma.o
 snd-soc-idma-objs := idma.o
+snd-soc-dma-wrapper-objs := dma-wrapper.o
 snd-soc-s3c24xx-i2s-objs := s3c24xx-i2s.o
 snd-soc-s3c2412-i2s-objs := s3c2412-i2s.o
 snd-soc-ac97-objs := ac97.o
@@ -8,6 +9,7 @@ snd-soc-s3c-i2s-v2-objs := s3c-i2s-v2.o
 snd-soc-samsung-spdif-objs := spdif.o
 snd-soc-pcm-objs := pcm.o
 snd-soc-i2s-objs := i2s.o
+snd-soc-audss-objs := audss.o
 
 obj-$(CONFIG_SND_SOC_SAMSUNG) += snd-soc-s3c24xx.o
 obj-$(CONFIG_SND_S3C24XX_I2S) += snd-soc-s3c24xx-i2s.o
@@ -18,6 +20,8 @@ obj-$(CONFIG_SND_SAMSUNG_SPDIF) += snd-soc-samsung-spdif.o
 obj-$(CONFIG_SND_SAMSUNG_PCM) += snd-soc-pcm.o
 obj-$(CONFIG_SND_SAMSUNG_I2S) += snd-soc-i2s.o
 obj-$(CONFIG_SND_SAMSUNG_I2S) += snd-soc-idma.o
+obj-$(CONFIG_SND_SAMSUNG_I2S) += snd-soc-audss.o
+obj-$(CONFIG_SND_SOC_SAMSUNG_USE_DMA_WRAPPER) += snd-soc-dma-wrapper.o
 
 # S3C24XX Machine Support
 snd-soc-jive-wm8750-objs := jive_wm8750.o
@@ -41,6 +45,7 @@ snd-soc-smdk-wm8994pcm-objs := smdk_wm8994pcm.o
 snd-soc-speyside-objs := speyside.o
 snd-soc-tobermory-objs := tobermory.o
 snd-soc-lowland-objs := lowland.o
+snd-soc-u1-mc1n2-objs := u1_mc1n2.o
 snd-soc-littlemill-objs := littlemill.o
 
 obj-$(CONFIG_SND_SOC_SAMSUNG_JIVE_WM8750) += snd-soc-jive-wm8750.o
@@ -65,3 +70,9 @@ obj-$(CONFIG_SND_SOC_SPEYSIDE) += snd-soc-speyside.o
 obj-$(CONFIG_SND_SOC_TOBERMORY) += snd-soc-tobermory.o
 obj-$(CONFIG_SND_SOC_LOWLAND) += snd-soc-lowland.o
 obj-$(CONFIG_SND_SOC_LITTLEMILL) += snd-soc-littlemill.o
+obj-$(CONFIG_SND_SOC_U1_MC1N2) += snd-soc-u1-mc1n2.o
+obj-$(CONFIG_SND_SOC_SLP_TRATS_MC1N2) += snd-soc-slp-trats-mc1n2.o
+obj-$(CONFIG_SND_SOC_SLP_TRATS_MC1N2) += snd-soc-slp-jack.o
+
+obj-$(CONFIG_SND_SAMSUNG_RP)   += srp_ulp/
+obj-$(CONFIG_SND_SAMSUNG_ALP)   += srp_alp/
