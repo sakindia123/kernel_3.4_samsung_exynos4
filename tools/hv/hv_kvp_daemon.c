@@ -38,7 +38,6 @@
 #include <linux/netlink.h>
 #include <ifaddrs.h>
 #include <netdb.h>
-#include <syslog.h>
 #include <sys/stat.h>
 #include <fcntl.h>
 
